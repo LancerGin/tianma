@@ -1,0 +1,441 @@
+html{
+    height:100%;
+}
+body{
+    background-color: #f2f2f2;
+    height:100%;
+}
+#container{
+    height:100%;
+}
+#container .container-fluid{
+    height: 100%;
+    padding:92px 30px 20px 240px;
+}
+#container .container-fluid>.row{
+    height:100%;
+    position: relative;
+}
+/*左侧导航 开始*/
+#container .aside_nav{
+    background-color: #343B4E;
+    animation: LtoR 1s;
+    transform-origin: 50% 0;
+    width: 210px;
+    height:100%;
+    position: fixed;
+    padding:0;
+    z-index:10000;
+}
+#nav{
+    height:100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+#nav .nav_logo{
+    order: 1;
+    width:100%;
+    height: 72px;
+    border-bottom: 2px solid rgba(255,255,255,.1);
+}
+#nav .nav_logo a{
+    width:200px;
+    height:72px;
+    padding:10px 20px;
+}
+#nav ul.list{
+    order:2;
+    display: block;
+    padding-top:20px;
+    height:80%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#nav ul.list li{
+    display: block;
+    float: left;
+    width:100%;
+    height: 50px;
+    line-height: 50px;
+    font-size:16px;
+    cursor: pointer;
+    margin-bottom:10px;
+    position: relative;
+    border-left: 3px solid #343B4E;
+}
+#nav ul.list li a{
+    width:100%;
+}
+#nav ul.list li p{
+    width:140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    margin-left:70px;
+}
+#nav ul.list li span{
+    font-size:22px;
+    position: absolute;
+    top:15px;
+    left:30px;
+}
+#nav ul.list li p{
+    color: #9ca8be;
+}
+#nav ul.list li span{
+    color: #14A7FF;
+}
+#nav ul.list li.active{
+    border-left: 3px solid #14A7FF;
+    background: #30374A;
+}
+#nav ul.list li:hover{
+    background: #30374A;
+}
+#nav ul.list li.active p,
+#nav ul.list li.active span,
+#nav ul.list li:hover p,
+#nav ul.list li:hover span{
+    color: #fff;
+}
+/*左侧导航 结束*/
+
+#invoice_container{
+    height:100%;
+    overflow-y: auto;
+}
+#invoice_container .card1{
+    animation: downtoup 1s;
+    transform-origin: 50% 0;
+}
+#invoice_container .card2{
+    display: none;
+    transform-origin: 50% 0;
+}
+#invoice_container .card3{
+    display: none;
+    transform-origin: 50% 0;
+}
+#invoice_container{
+    padding-left:40px;
+}
+#invoice_container h2{
+    font-size:18px;
+    font-weight:bold;
+    line-height:60px;
+}
+
+/*发票管理 开始*/
+#invoice{
+    width:100%;
+    background-color: #fff;
+    box-shadow: 0 0 5px #888888;
+    margin-bottom:40px;
+}
+#invoice .row{
+    padding:20px;
+}
+#invoice .row .border-right{
+    border-right:1px solid #ccc;
+}
+#invoice .row>div{
+    height:168px;
+    position: relative;
+}
+#invoice .row>div>h3{
+    height:48px;
+    font-size:16px;
+    font-weight:normal;
+}
+#invoice .row>div>p{
+    display: block;
+    height:42px;
+    font-size:14px;
+    font-weight:normal;
+}
+#invoice .row>div>p label{
+    float: left;
+    margin-right:20px;
+    font-size:14px;
+    font-weight:normal;
+}
+#invoice .row>div>p span{
+    display: inline;
+}
+#invoice .row>div .black{
+    color: #888;
+}
+#invoice .row>div>.counts{
+    font-size:26px;
+    color: #000;
+}
+#invoice .row>div>.btn{
+    width:90px;
+    height:34px;
+    color: #fff;
+    background: #14A7FF;
+    border-color: #14A7FF;
+    position: absolute;
+    bottom:0;
+    left:15px;
+}
+#invoice .row>div>span{
+    font-size:16px;
+    font-weight:bold;
+    color: #14A7FF;
+    position: absolute;
+    bottom:0;
+    left:15px;
+    cursor: pointer;
+}
+#invoice table th{
+    text-align: center;
+}
+#invoice table td{
+    text-align: center;
+    height:30px;
+    padding:4px 6px ;
+}
+#invoice table td:nth-child(1){
+    width:150px;
+}
+/*发票管理 结束*/
+
+/*开票信息 开始*/
+#invoice_container .card2 h2 p{
+    height:26px;
+    line-height:26px;
+    border-right:1px solid #aaa;
+    padding-left:26px;
+    padding-right:16px;
+    margin-bottom:16px;
+    margin-right:16px;
+    font-size:20px;
+    font-weight:normal;
+    color: #14A7FF;
+    position: relative;
+    cursor: pointer;
+}
+#invoice_container .card2 h2 p span{
+    font-size:26px;
+    color: #14A7FF;
+    position: absolute;
+    top:2px;
+    left:0;
+}
+#invoiceInfo{
+    width:100%;
+    background-color: #fff;
+    box-shadow: 0 0 5px #888888;
+    margin-bottom:40px;
+    padding:20px;
+}
+#invoiceInfo .form-group{
+    margin-top:20px;
+    margin-bottom:6px;
+}
+#invoiceInfo .form-group .control-label {
+    font-weight:normal;
+    margin-bottom:0;
+}
+#invoiceInfo .form-group .input-group.radio{
+    float: left;
+    margin:0 30px 20px 0;
+}
+#invoiceInfo .form-group .input-group.radio input{
+    width:18px;
+    height: 18px;
+    margin:2px 0 0 6px;
+}
+#invoiceInfo .form-group .input-group.radio label {
+    font-weight:normal;
+    padding-left:36px;
+}
+#invoiceInfo .form-group .col-input {
+    width:340px;
+}
+#invoiceInfo .form-group .col-input input {
+    font-weight:normal;
+    width:320px;
+}
+#invoiceInfo button#saveInvoiceInfo {
+    width:160px;
+    height:34px;
+    line-height:34px;
+    margin:20px 0 40px 0;
+    padding:0;
+    font-size:16px;
+    color: #fff;
+    background-color: #14A7FF;
+    border-color:#14A7FF;
+    border-radius:6px;
+}
+#invoiceInfo .advise{
+    font-size:12px;
+    color: #FF6906;
+    margin-bottom:30px;
+    padding-left:4px;
+}
+/*开票信息 结束*/
+
+/*邮寄信息 开始*/
+#invoice_container .card3 h2 p{
+    height:26px;
+    line-height:26px;
+    border-right:1px solid #aaa;
+    padding-left:26px;
+    padding-right:16px;
+    margin-bottom:16px;
+    margin-right:16px;
+    font-size:20px;
+    font-weight:normal;
+    color: #14A7FF;
+    position: relative;
+    cursor: pointer;
+}
+#invoice_container .card3 h2 p span{
+    font-size:26px;
+    color: #14A7FF;
+    position: absolute;
+    top:2px;
+    left:0;
+}
+#mailInfo{
+    width:100%;
+    background-color: #fff;
+    box-shadow: 0 0 5px #888888;
+    margin-bottom:40px;
+    padding:20px;
+}
+#mailInfo .form-group{
+    margin-top:20px;
+    margin-bottom:6px;
+}
+#mailInfo .form-group .control-label {
+    font-weight:normal;
+    margin-bottom:0;
+}
+#mailInfo .form-group .col-input {
+    width:340px;
+}
+#mailInfo .form-group .col-input input {
+    font-weight:normal;
+    width:320px;
+}
+#mailInfo button#saveMailInfo {
+    width:160px;
+    height:34px;
+    line-height:34px;
+    margin:20px 0 40px 0;
+    padding:0;
+    font-size:16px;
+    color: #fff;
+    background-color: #14A7FF;
+    border-color:#14A7FF;
+    border-radius:6px;
+}
+/*邮寄信息 结束*/
+
+/*表单验证提示信息*/
+.asterisk{
+    line-height:34px;
+    font-size:18px;
+    color: #CA2C2D;
+}
+.error{
+    line-height:34px;
+    color: #CA2C2D;
+}
+.success{
+    font-size:18px;
+    color: #00CCFF;
+}
+/*应用弹窗 开始*/
+.layui-layer{
+    border-radius: 8px!important;
+}
+.layui-layer .layui-layer-title{
+    padding:0;
+    border-bottom:none;
+    border-radius: 8px 8px 0 0;
+    background-color: #fff;
+    text-align: center;
+    font-size:20px;
+    font-weight:bold;
+    height: 58px;
+    line-height:58px;
+}
+.layui-layer .layui-layer-content{
+    padding:0 80px;
+}
+.layui-layer .form-group .tips{
+    padding-left:0;
+    padding-top:16px;
+}
+.layui-layer .form-group .tips span{
+    color:#14A7FF;
+}
+.layui-layer .control-label{
+    text-align: left;
+    font-size:16px;
+    line-height:40px;
+}
+.layui-layer .layui-layer-btn a{
+    width:140px;
+    height:36px;
+    line-height:36px;
+    margin:20px;
+    border-radius:6px;
+}
+.layui-layer .layui-layer-btn a.layui-layer-btn0{
+    background-color: #14A7FF;
+    border-color:#14A7FF;
+}
+.layui-layer #billComfirm{
+    margin-top:20px;
+}
+.layui-layer #billComfirm .form-group{
+    margin-bottom:6px;
+}
+.layui-layer #billComfirm .form-group div{
+    font-size:16px;
+    line-height:24px;
+    padding-top:6px;
+}
+.layui-layer #billComfirm .form-group .control-label{
+    color: #999;
+}
+
+/*应用弹窗 结束*/
+
+/*弹窗 开始*/
+
+.layui-layer .layui-layer-content#noInvoiceInfo,
+.layui-layer .layui-layer-content#noMailInfo {
+    text-align: center;
+}
+.layui-layer .layui-layer-content#noInvoiceInfo span,
+.layui-layer .layui-layer-content#noMailInfo span{
+    color: #14A7FF;
+    margin:30px;
+    font-size:80px;
+}
+.layui-layer .layui-layer-content#noInvoiceInfo span.glyphicon-ban-circle,
+.layui-layer .layui-layer-content#noMailInfo span.glyphicon-ban-circle{
+    color: #CB0002;
+}
+.layui-layer .layui-layer-content#noInvoiceInfo h2,
+.layui-layer .layui-layer-content#noMailInfo h2{
+    color: #000;
+    line-height:50px;
+    font-size:24px;
+}
+.layui-layer .layui-layer-content#noInvoiceInfo p,
+.layui-layer .layui-layer-content#noMailInfo p{
+    display: block;
+    color: #555;
+    line-height:40px;
+    font-size:18px;
+}
+/*弹窗 结束*/

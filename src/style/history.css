@@ -1,0 +1,162 @@
+html{
+    height:100%;
+}
+body{
+    background-color: #f2f2f2;
+    height:100%;
+}
+#container{
+    height:100%;
+}
+#container .container-fluid{
+    height: 100%;
+    padding:92px 30px 20px 240px;
+}
+#container .row{
+    height:100%;
+    position: relative;
+}
+/*左侧导航 开始*/
+#container .aside_nav{
+    background-color: #343B4E;
+    animation: LtoR 1s;
+    transform-origin: 50% 0;
+    width: 210px;
+    height:100%;
+    position: fixed;
+    padding:0;
+    z-index:10000;
+}
+#nav{
+    height:100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+#nav .nav_logo{
+    order: 1;
+    width:100%;
+    height: 72px;
+    border-bottom: 2px solid rgba(255,255,255,.1);
+}
+#nav .nav_logo a{
+    width:200px;
+    height:72px;
+    padding:10px 20px;
+}
+#nav ul.list{
+    order:2;
+    display: block;
+    padding-top:20px;
+    height:80%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#nav ul.list li{
+    display: block;
+    float: left;
+    width:100%;
+    height: 50px;
+    line-height: 50px;
+    font-size:16px;
+    cursor: pointer;
+    margin-bottom:10px;
+    position: relative;
+    border-left: 3px solid #343B4E;
+}
+#nav ul.list li a{
+    width:100%;
+}
+#nav ul.list li p{
+    width:140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    margin-left:70px;
+}
+#nav ul.list li span{
+    font-size:22px;
+    position: absolute;
+    top:15px;
+    left:30px;
+}
+#nav ul.list li p{
+    color: #9ca8be;
+}
+#nav ul.list li span{
+    color: #14A7FF;
+}
+#nav ul.list li.active{
+    border-left: 3px solid #14A7FF;
+    background: #30374A;
+}
+#nav ul.list li:hover{
+    background: #30374A;
+}
+#nav ul.list li.active p,
+#nav ul.list li.active span,
+#nav ul.list li:hover p,
+#nav ul.list li:hover span{
+    color: #fff;
+}
+/*左侧导航 结束*/
+
+#history_container{
+    height:100%;
+    overflow: auto;
+}
+#history_container .card1{
+    animation: downtoup 1s;
+    transform-origin: 50% 0;
+}
+#history_container{
+    padding-left:40px;
+}
+#history_container h2{
+    font-size:18px;
+    font-weight:bold;
+    line-height:60px;
+}
+/*交易记录 开始*/
+#history{
+    width:100%;
+    /*height:280px;*/
+    background-color: #fff;
+    box-shadow: 0 0 5px #888888;
+}
+#history input{
+    border:1px solid #ccc;
+    height:26px;
+    line-height: 26px;
+    padding-left:14px;
+    font-size:14px;
+    color: #000;
+}
+#history table th{
+    text-align: center;
+}
+#history table td{
+    text-align: center;
+    height:30px;
+    padding:4px 6px ;
+}
+#history table td:nth-child(1){
+    width:150px;
+}
+#history table td .num{
+    max-width:300px;
+    height:26px;
+    line-height:30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#history table td>button{
+    width:60px;
+    height:30px;
+    line-height:30px;
+    padding:0;
+    color: #fff;
+    background-color: #FF6600;
+}
+/*交易记录 结束*/

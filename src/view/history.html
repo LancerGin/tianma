@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html leng="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="screen-orientation" content="portrait">
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <title>天马工场-交易记录</title>
+    <link rel="stylesheet" type="text/css" href="../style/common/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/dataTable/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="../lib/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../style/common/common.css">
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link rel="stylesheet" type="text/css" href="../style/history.css">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script>
+        alert('请注意：\n\n检测到您浏览器内核版本过低，为了您有更好地网页体验，\n\n建议请您升级浏览器版本至IE9以上或使用谷歌、火狐浏览器！');
+        window.location.href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads";
+    </script>
+    <![endif]-->
+</head>
+<body>
+<div id="container">
+    <!--左侧导航 开始-->
+    <div class="aside_nav">
+        <div id="nav">
+            <div class="nav_logo">
+                <a href="../index.html"><img src="../images/login_logo.png"/></a>
+            </div>
+            <ul class="list">
+                <li><a href="balance.html">
+                    <span class="glyphicon glyphicon-euro"></span><p>账户信息</p>
+                </a></li>
+                <li class="active"><a href="history.html">
+                    <span class="glyphicon glyphicon-list-alt"></span><p>交易记录</p>
+                </a></li>
+                <li><a href="user.html">
+                    <span class="glyphicon glyphicon-user"></span><p>个人信息</p>
+                </a></li>
+                <li><a href="invoice.html">
+                    <span class="glyphicon glyphicon-print"></span><p>发票管理</p>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+    <!--左侧导航 结束-->
+    <!--顶部导航栏 开始-->
+    <div id="header-logged">
+        <div class="header">
+            <div class="f-right user-info">
+                <a href="appOverview.html" title="控制台">控制台&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                <a href="##" title="" class="user-center"></a>
+            </div>
+        </div>
+    </div>
+    <!--顶部导航栏 结束-->
+    <div class="container-fluid">
+        <div class="row">
+            <!--交易记录 开始-->
+            <div id="history_container" class="col-sm-12" v-cloak>
+                <div class="card1">
+                    <h2>交易记录</h2>
+                    <div id="history">
+                        <div class="layui-tab layui-tab-card">
+                            <ul class="layui-tab-title">
+                                <li class="layui-this">充值记录</li>
+                                <li>订单记录</li>
+                            </ul>
+                            <div class="layui-tab-content">
+                                <div class="layui-tab-item layui-show">
+                                    <table id="chargeTable">
+                                        <thead>
+                                            <tr>
+                                                <th>交易时间</th><th>金额 (元)</th><th>状态</th><th>交易号</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="charge in chargeList">
+                                                <td>{{charge.time}}</td>
+                                                <td>{{charge.money}}</td>
+                                                <td v-if="charge.status===1">充值成功</td>
+                                                <td v-else-if="charge.status===0">充值失败</td>
+                                                <td v-else-if="charge.status===2">其他</td>
+                                                <td>
+                                                    <p class="num">{{charge.num}}</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="layui-tab-item">
+                                    <table id="orderTable">
+                                        <thead>
+                                        <tr>
+                                            <th>交易时间</th><th>金额 (元)</th><th>状态</th><th>交易号</th><th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="order in orderList">
+                                            <td>{{order.time}}</td>
+                                            <td>{{order.money}}</td>
+                                            <td v-if="order.status===1">交易成功</td>
+                                            <td v-else-if="order.status===0">取消交易</td>
+                                            <td v-else-if="order.status===2">待付款</td>
+                                            <td>
+                                                <p class="num">{{order.num}}</p>
+                                            </td>
+                                            <td v-if="order.status===2">
+                                                <button type="button" class="btn" v-on:click="toPay(order.id)">付款</button>
+                                            </td>
+                                            <td v-else></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--交易记录 开始-->
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../script/common/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="../script/common/vue.js"></script>
+<script type="text/javascript" src="../script/common/vue-resource.js"></script>
+<script type="text/javascript" src="../lib/dataTable/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="../lib/layui/layui.all.js"></script>
+<script type="text/javascript" src="../script/script.js"></script>
+<script type="text/javascript" src="../config/HTTPurl.js"></script>
+<script type="text/javascript" src="../script/getUserInfo.js"></script>
+<script type="text/javascript" src="../script/history.js"></script>
+</body>
+</html>

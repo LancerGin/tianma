@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html leng="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="screen-orientation" content="portrait">
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <title>天马工场-个人信息</title>
+    <link rel="stylesheet" type="text/css" href="../style/common/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../style/common/common.css">
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link rel="stylesheet" type="text/css" href="../style/user.css">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script>
+        alert('请注意：\n\n检测到您浏览器内核版本过低，为了您有更好地网页体验，\n\n建议请您升级浏览器版本至IE9以上或使用谷歌、火狐浏览器！');
+        window.location.href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads";
+    </script>
+    <![endif]-->
+</head>
+<body>
+<div id="container">
+    <!--左侧导航 开始-->
+    <div class="aside_nav">
+        <div id="nav">
+            <div class="nav_logo">
+                <a href="../index.html"><img src="../images/login_logo.png"/></a>
+            </div>
+            <ul class="list">
+                <li><a href="balance.html">
+                    <span class="glyphicon glyphicon-euro"></span><p>账户信息</p>
+                </a></li>
+                <li><a href="history.html">
+                    <span class="glyphicon glyphicon-list-alt"></span><p>交易记录</p>
+                </a></li>
+                <li class="active"><a href="user.html">
+                    <span class="glyphicon glyphicon-user"></span><p>个人信息</p>
+                </a></li>
+                <li><a href="invoice.html">
+                    <span class="glyphicon glyphicon-print"></span><p>发票管理</p>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+    <!--左侧导航 结束-->
+    <!--顶部导航栏 开始-->
+    <div id="header-logged">
+        <div class="header">
+            <div class="f-right user-info">
+                <a href="appOverview.html" title="控制台">控制台&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                <a href="##" title="" class="user-center"></a>
+            </div>
+        </div>
+    </div>
+    <!--顶部导航栏 结束-->
+    <div class="container-fluid">
+        <div class="row">
+            <!--个人信息 开始-->
+            <div id="user_container" class="col-sm-12" v-cloak>
+                <div class="card1">
+                    <h2>个人信息</h2>
+                    <div id="user">
+                        <h3>基本资料</h3>
+                        <p class="username">充值金额账户名:&nbsp;&nbsp;{{username}}&nbsp;&nbsp;<span v-on:click="logout()">退出账号</span></p>
+                        <div class="organize">所属机构:&nbsp;&nbsp;
+                            <p v-if="organize.name===''">暂未设置</p>
+                            <p v-else>{{organize.name}}</p>
+                            <div class="edit" v-bind:class="{'editActive': organize.editActive} ">
+                                <input type="text" v-model="organize.name" maxlength="50">
+                                <span v-on:click="changeOrganize()" class="glyphicon glyphicon-ok"></span>
+                            </div>
+                            <span v-on:click="openEdit()" class="glyphicon glyphicon-pencil"></span>
+                        </div>
+                        <button type="button" class="btn" id="changePWD" v-on:click="openForm()">修改密码</button>
+                        <div class="pwd">
+                            <h3>修改密码</h3>
+                            <form id="changePwdForm" class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="password_old" class="col-sm-2 control-label">原始密码 :</label>
+                                    <div class="col-sm-5 col-input">
+                                        <div class="input-group">
+                                            <!--<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>-->
+                                            <input type="password" class="form-control" id="password_old" name="password_old" placeholder="输入原始密码" v-model="oldPwd">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <span class="asterisk">*</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password_new" class="col-sm-2 control-label">新密码 :</label>
+                                    <div class="col-sm-5 col-input">
+                                        <div class="input-group">
+                                            <!--<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>-->
+                                            <input type="password" class="form-control" id="password_new" name="password_new" placeholder="输入新密码" v-model="newPwd">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <span class="asterisk">*</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm_password" class="col-sm-2 control-label">确认密码 :</label>
+                                    <div class="col-sm-5 col-input">
+                                        <div class="input-group">
+                                            <!--<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>-->
+                                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="确认密码" v-model="confirmPwd">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <span class="asterisk">*</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-5">
+                                        <button type="submit" class="btn" id="confirmChange" >确认修改</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--个人信息 开始-->
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../script/common/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="../script/common/jquery.validate.js"></script>
+<script type="text/javascript" src="../script/common/vue.js"></script>
+<script type="text/javascript" src="../script/common/vue-resource.js"></script>
+<script type="text/javascript" src="../lib/layer/layer.js"></script>
+<script type="text/javascript" src="../script/script.js"></script>
+<script type="text/javascript" src="../config/HTTPurl.js"></script>
+<script type="text/javascript" src="../script/getUserInfo.js"></script>
+<script type="text/javascript" src="../script/user.js"></script>
+</body>
+</html>

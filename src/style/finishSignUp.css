@@ -1,0 +1,40 @@
+html{
+    height:100%;
+}
+body{
+    background-color: #f2f2f2;
+}
+#topTitle{
+    margin-top:2rem;
+    font-size: .3rem;
+    line-height:1rem;
+}
+#container{
+    padding:.2rem 0 .6rem 0;
+    border-radius:6px;
+    border:1px solid #ddd;
+}
+#container .title{
+    height:.8rem;
+    line-height:.8rem;
+    padding-left:1rem;
+    font-size: .2rem;
+}
+#container .form-group{
+    height:.6rem;
+    margin-top:.3rem;
+    padding-left:1rem;
+}
+#container .form-group input.form-control{
+    height:.42rem;
+}
+#container .form-group .control-label{
+    font-size: .2rem;
+    text-align: left;
+}
+#container .form-group .btn-primary{
+    margin:.6rem 0;
+    background-color: #009DF7;
+    border-color: #009DF7;
+}
+

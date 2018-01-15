@@ -1,0 +1,254 @@
+
+#container{
+    margin-top:72px;
+    padding-top:20px;
+}
+#container .container{
+    padding-bottom:60px;
+    max-width:900px;
+}
+/*订单详情 开始*/
+#container .container .title{
+    height:48px;
+    line-height:48px;
+    padding-left:40px;
+    font-size:18px;
+}
+#container .container .content{
+    border:1px solid #aaa;
+    border-radius: 6px;
+    padding:10px 20px 200px 20px;
+}
+#container .container .content>div{
+    padding:30px 20px;
+    border-bottom:1px solid #ccc;
+}
+#container .container .content .assembly h3,
+#container .container .content .assembly p.price{
+    margin-bottom:30px;
+    font-size:26px;
+    font-weight:bold;
+    color: #009FEB;
+}
+#container .container .content .assembly ul{
+    margin-top:30px;
+}
+#container .container .content .assembly ul li{
+    margin-right:30px;
+    margin-bottom:30px;
+    font-size:20px;
+}
+#container .container .content .assembly ul li span{
+    margin-right:30px;
+    color: #FFCC01;
+}
+#container .container .content .assembly p.introduce{
+    display: block;
+    line-height:40px;
+}
+#container .container .content .assembly p.introduce span{
+    margin-right:20px;
+}
+
+#container .container .content .service .service_container{
+    border:1px solid #009FEB;
+    padding:10px 30px;
+    position: relative;
+}
+#container .container .content .service .service_container:nth-child(1){
+    margin-bottom:30px;
+}
+#container .container .content .service .service_container h4{
+    line-height:40px;
+    font-weight:bold;
+    font-size:20px;
+}
+#container .container .content .service .service_container p{
+    line-height:30px;
+    display: block;
+    font-size:16px;
+}
+#container .container .content .service .service_container .dos{
+    position: absolute;
+    top:25px;
+    right:0;
+}
+#container .container .content .service .service_container .dos .price{
+    height:40px;
+    line-height:40px;
+    padding-right:20px;
+    border-right:1px solid #999;
+    font-size:18px;
+    font-weight:bold;
+}
+#container .container .content .service .service_container .dos .box{
+    height:40px;
+    line-height:40px;
+    padding:2px 40px;
+}
+#container .container .content .service .service_container .dos .box input{
+    width:16px;
+    height:16px;
+    cursor: pointer;
+}
+
+#container .container .content .contacts{
+    height:200px;
+    padding-left:51px;
+    position: relative;
+}
+#container .container .content .contacts h4{
+    line-height:40px;
+    font-weight:bold;
+    font-size:20px;
+}
+#container .container .content .contacts .form-group{
+    margin-top:20px;
+}
+#container .container .content .contacts .form-group .control-label{
+    text-align: center;
+    color: #646464;
+}
+#container .container .content .contacts .form-group .input-group{
+    min-width:300px;
+}
+#container .container .content .contacts .comfirm{
+    position: absolute;
+    right:30px;
+    bottom:-160px;
+}
+#container .container .content .contacts .comfirm .check{
+    height:60px;
+    line-height:58px;
+}
+#container .container .content .contacts .comfirm .check input{
+    width:14px;
+    height:14px;
+    margin-right:10px;
+    cursor: pointer;
+}
+#container .container .content .contacts .comfirm .check label{
+
+    color: #323232;
+    font-weight:normal;
+}
+#container .container .content .contacts .comfirm .check label a{
+    cursor: pointer;
+    color: #009FEB;
+}
+#container .container .content .contacts .comfirm .check label a:hover{
+    text-decoration: underline;
+}
+#container .container .content .contacts .comfirm .total{
+    height:46px;
+    font-size:18px;
+}
+#container .container .content .contacts .comfirm .total p{
+    margin-right:20px;
+    font-weight:bold;
+    color: #323232;
+}
+#container .container .content .contacts .comfirm .total span{
+    font-weight:bold;
+    color: #009FEB;
+}
+#container .container .content .contacts .comfirm .btn{
+    float: right;
+    width:120px;
+    border-radius:8px;
+    border-color: #009FEB;
+    background-color: #009FEB;
+    color: #fff;
+}
+/*订单详情 结束*/
+
+/*账户信息及支付 开始*/
+#container .container .content .total p{
+    font-weight:normal;
+    font-size:18px;
+    color: #323232;
+}
+#container .container .content .total .total_counts span{
+    margin:0 20px;
+    font-weight:bold;
+    font-size:22px;
+    color: #009FEB;
+}
+#container .container .content .balance{
+    position: relative;
+    padding-bottom:0;
+}
+#container .container .content .balance .form-group{
+    line-height:48px;
+}
+#container .container .content .balance .control-label{
+    text-align: left;
+    font-weight:normal;
+    font-size:18px;
+}
+#container .container .content .balance .input-group{
+    padding-top:7px;
+    line-height:48px;
+}
+#container .container .content .balance .input-group input{
+    width: 18px;
+    height:18px;
+    margin-top:15px;
+    cursor: pointer;
+}
+#container .container .content .balance .input-group span{
+    font-size:18px;
+    margin-left:-30px;
+    color: #A40102;
+}
+#container .container .content .balance .input-group span.yes{
+    color: #EB6300;
+}
+#container .container .content .balance .btn{
+    width:120px;
+    position: absolute;
+    left: 0;
+    bottom:-90px;
+    border-radius:8px;
+    border-color: #009FEB;
+    background-color: #009FEB;
+    color: #fff;
+}
+/*账户信息及支付 结束*/
+
+/*支付结果 开始*/
+#container .container .content .result span.glyphicon-ok-sign{
+    font-size:60px;
+    color: #009FEB;
+}
+#container .container .content .result span.glyphicon-remove-sign{
+    font-size:60px;
+    color: #545454;
+}
+#container .container .content .result h4{
+    font-size:26px;
+    color: #333;
+}
+#container .container .content .result a{
+    width: 120px;
+    margin-top:20px;
+    border-radius:8px;
+    border-color: #009FEB;
+    background-color: #009FEB;
+    color: #fff;
+}
+#container .container #card3 .content{
+    padding:50px 20px 140px 20px;
+}
+/*支付结果 结束*/
+
+#container #card1{
+    animation: downtoup 1s;
+    transform-origin: 50% 0;
+}
+#container #card2{
+    display: none;
+}
+#container #card3{
+    display: none;
+}

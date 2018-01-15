@@ -1,0 +1,65 @@
+/*小于1440px*/
+@media screen and (max-width: 1440px) {
+    .header{
+    	padding: 0 0.3rem;
+    }
+    .section{
+    	padding: 0 0.2rem;
+    }
+    .index-wrap2 > p,.index-wrap3 > p{
+    	line-height: 24px;
+    }
+    .login-form{
+    	height: 420px;
+    }
+    .login-box{
+    	width: 400px;
+    }
+    .login-form .form-control{
+    	height: 40px;
+    }
+    .login-form .input-group{
+    	margin-bottom: 20px;
+    }
+    .login-form > div{
+    	padding: 20px 20px 0;
+    }
+    .input-group.code input{
+    	width: 160px;
+    }
+    .input-group.code p{
+    	width: 90px;
+    	height: 40px;
+    }
+    .index-wrap2,.index-wrap3,.index-wrap4,.index-wrap5{
+        margin-top: 5%;
+    }
+    .index-products .f-left{
+        width: 3rem;
+    }
+    .wrap2 .index-wrap2 > p{
+        line-height: 24px;
+    }
+    .index-wrap5 li img{
+        width: 0.88rem;
+    }
+	.index-foot{
+		height:1rem;
+	}
+	.foot-msg p{
+		line-height:0.5rem;
+	}
+    .index-wrap5{
+        margin-top:3%;
+    }
+    .detail-btn{
+        margin-top:0.4rem;
+    }
+}
+
+/* 大于1920px */
+@media screen and (min-width: 1920px) {
+    .index-wrap2,.index-wrap3,.index-wrap4,.index-wrap5{
+        margin-top: 10%;
+    }
+}

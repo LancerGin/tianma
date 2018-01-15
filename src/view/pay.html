@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html leng="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="screen-orientation" content="portrait">
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <title>天马工场-订单支付</title>
+    <link rel="stylesheet" type="text/css" href="../style/common/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../style/common/common.css">
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link rel="stylesheet" type="text/css" href="../style/pay.css">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script>
+        alert('请注意：\n\n检测到您浏览器内核版本过低，为了您有更好地网页体验，\n\n建议请您升级浏览器版本至IE9以上或使用谷歌、火狐浏览器！');
+        window.location.href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads";
+    </script>
+    <![endif]-->
+</head>
+<body>
+<div id="container">
+    <!--顶部导航栏 开始-->
+    <div id="header-logged">
+        <div class="section header">
+            <div class="f-right user-info">
+                <span style="font-size: 18px">你好,</span>
+                <a href="##" title="" class="user-center"></a>
+            </div>
+        </div>
+    </div>
+    <!--顶部导航栏 结束-->
+    <div class="container" id="pay_container" v-cloak>
+        <div id="card1">
+            <div class="row">
+                <div class="title">填写并核对订单信息</div>
+            </div>
+            <div class="row">
+                <div class="content">
+                    <!--组件列表 开始-->
+                    <div class="assembly">
+                        <h3>专业媒体解决方案</h3>
+                        <p class="price">￥ {{priceOfSetmeal}}</p>
+                        <ul>
+                            <li><span class="glyphicon glyphicon-ok-sign"></span>高可用框架</li>
+                            <li><span class="glyphicon glyphicon-ok-sign"></span>思远CMS组件</li>
+                            <li><span class="glyphicon glyphicon-ok-sign"></span>齐跃直播组件</li>
+                            <li><span class="glyphicon glyphicon-ok-sign"></span>齐跃视频组件</li>
+                        </ul>
+                        <div class="clearfix"></div>
+                        <p class="introduce"><span class="glyphicon glyphicon-tree-conifer"></span>资讯模块、支持图文、多图、视频、广告、专题等多种资讯模式</p>
+                        <p class="introduce"><span class="glyphicon glyphicon-tree-conifer"></span>支持直播推流、直播预告、直播互动、评论审查、置顶、删除</p>
+                        <p class="introduce"><span class="glyphicon glyphicon-tree-conifer"></span>支持投票、报名活动形式</p>
+                        <p class="introduce"><span class="glyphicon glyphicon-tree-conifer"></span>支持独立用户体系</p>
+                    </div>
+                    <!--组件列表 结束-->
+                    <!--购买服务 开始-->
+                    <div class="service">
+                        <div class="service_container">
+                            <h4>专业集成服务</h4>
+                            <p>成都索贝数码科技股份有限公司&nbsp;&nbsp;&nbsp;&nbsp;提供</p>
+                            <div class="dos">
+                                <div class="price pull-left">{{serviceOfIntegrate.value}} 元/年</div>
+                                <div class="box pull-right">
+                                    <input type="checkbox" id="priceOfIntegrate" v-bind:value="serviceOfIntegrate.value" v-model="serviceOfIntegrate.checked" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service_container">
+                            <h4>专业运维服务</h4>
+                            <p>华栖云科技股份有限公司&nbsp;&nbsp;&nbsp;&nbsp;提供</p>
+                            <div class="dos">
+                                <div class="price pull-left">{{serviceOfMaintain.value}} 元/年</div>
+                                <div class="box pull-right">
+                                    <input type="checkbox" id="priceOfMaintain" v-bind:value="serviceOfMaintain.value" v-model="serviceOfMaintain.checked" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--购买服务 结束-->
+                    <!--联系人信息 开始-->
+                    <div class="contacts">
+                        <h4>联系人信息</h4>
+                        <form id="contactsForm" class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label">联系人姓名 :</label>
+                                <div class="col-sm-10 col-input">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="name" name="name" v-model="name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="col-sm-2 control-label">联系人电话 :</label>
+                                <div class="col-sm-10 col-input">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="phone" name="phone" v-model="phone">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="comfirm">
+                            <div class="check">
+                                <input id="check" name="check" type="checkbox" v-model="isCheck">
+                                <label for="check">同意并接受 《<a href="###">服务条款</a>》</label>
+                            </div>
+                            <div class="total">
+                                <p>总金额 ：</p><span class="counts">￥ {{priceOfOrder}}</span>
+                            </div>
+                            <button class="btn" v-if="isCheck" v-on:click="openComfirmPay()">去支付</button>
+                            <button class="btn btn-default disabled" v-else disabled>请同意服务条款</button>
+                        </div>
+                    </div>
+                    <!--联系人信息 结束-->
+                </div>
+            </div>
+        </div>
+        <div id="card2">
+            <div class="row">
+                <div class="title">订单编号 ：{{orderNum}}</div>
+            </div>
+            <div class="row">
+                <div class="content">
+                    <!--支付总额 开始-->
+                    <div class="total">
+                        <p class="total_label">本次支付总额：</p>
+                        <p class="total_counts"><span>{{priceOfOrder}}</span>元</p>
+                    </div>
+                    <!--支付总额 结束-->
+                    <!--账户信息及支付 开始-->
+                    <div class="balance">
+                        <form id="balanceForm" class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="balance" class="col-sm-4 control-label">账户余额 : {{usebalance.value}} 元</label>
+                                <div class="col-sm-4 col-input">
+                                    <div class="input-group">
+                                        <input type="checkbox" checked class="form-control" id="balance" v-bind:value="usebalance.value" v-model="usebalance.checked">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" v-if="isVIP">
+                                <label for="credit" class="col-sm-4 control-label">可用信用额度 : {{usecredit.value}} 元</label>
+                                <div class="col-sm-4 col-input">
+                                    <div class="input-group">
+                                        <input type="checkbox" class="form-control" id="credit" v-bind:value="usecredit.value" v-model="usecredit.checked">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="totaluse" class="col-sm-4 control-label">本次使用余额 : {{totalBalance}} 元</label>
+                                <div class="col-sm-4 col-input">
+                                    <div class="input-group">
+                                        <span v-if="enoughToPay" class="yes">余额充足，可支付</span>
+                                        <span v-else class="no">余额不足，需充值</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-5">
+                                    <button v-if="enoughToPay" type="button" class="btn" id="confirmPay" v-on:click="pay()">确认支付</button>
+                                    <button v-else type="button" class="btn" id="confirmPay" v-on:click="torecharge()">前往充值</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--账户信息及支付 结束-->
+                </div>
+            </div>
+        </div>
+
+        <div id="card3">
+            <div class="row">
+                <div class="title">系统提示</div>
+            </div>
+            <div class="row">
+                <div class="content">
+                    <div></div>
+                    <!--支付总额 开始-->
+                    <div class="result">
+                        <div class="col-sm-offset-3 col-sm-2">
+                            <span class="glyphicon glyphicon-ok-sign" v-if="result===0"></span>
+                            <span class="glyphicon glyphicon-remove-sign" v-else-if="result===-1"></span>
+                        </div>
+                        <div class="col-sm-6" v-if="result===0">
+                            <h4>购买成功 ！</h4>
+                            <a v-bind:href=whereToGo class="btn">前往配置APP</a>
+                        </div>
+                        <div class="col-sm-6" v-else-if="result===-1">
+                            <h4>购买失败 ！</h4>
+                            <a class="btn" v-on:click="pay()">继续支付</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!--支付总额 结束-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../script/common/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="../script/common/vue.js"></script>
+<script type="text/javascript" src="../script/common/vue-resource.js"></script>
+<script type="text/javascript" src="../lib/layer/layer.js"></script>
+<script type="text/javascript" src="../script/script.js"></script>
+<script type="text/javascript" src="../config/HTTPurl.js"></script>
+<script type="text/javascript" src="../script/getUserInfo.js"></script>
+<script type="text/javascript" src="../script/pay.js"></script>
+</body>
+</html>

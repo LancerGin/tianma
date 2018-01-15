@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html leng="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="screen-orientation" content="portrait">
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <title>天马工场-可视化配置中心</title>
+    <link rel="stylesheet" type="text/css" href="../style/common/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../style/common/common.css">
+    <link rel="stylesheet" type="text/css" href="../lib/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link rel="stylesheet" type="text/css" href="../style/visual.css">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script>
+        alert('请注意：\n\n检测到您浏览器内核版本过低，为了您有更好地网页体验，\n\n建议请您升级浏览器版本至IE9以上或使用谷歌、火狐浏览器！');
+        window.location.href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads";
+    </script>
+    <![endif]-->
+    <script type="text/javascript" src="../script/common/lodash.min.js"></script><!--流畅的列表过渡动画-->
+</head>
+<body>
+<div id="container">
+    <!--顶部 开始-->
+    <div id="header">
+        <div class="container header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="back">
+                        <a v-bind:href="backUrl"><span class="glyphicon glyphicon-menu-left"></span>返回</a>
+                    </div>
+                    <h1 class="text-center" v-cloak>{{editionNAME}} {{editionNUM}}</h1>
+                    <div class="save">
+                        <button type="button" class="btn btn-default" v-on:click="saveSets()">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--顶部 结束-->
+    <div class="container">
+        <div id="setCenter" class="row">
+            <!--左边 开始-->
+            <div class="col-sm-4">
+                <div class="top">底部导航栏模块 <span v-on:click="addNav()" class="glyphicon glyphicon-plus"></span></div>
+                <div class="body" v-cloak>
+                    <transition-group
+                                class="nav_list"
+                                name="list-cc"
+                                tag="ul"
+                        >
+                        <li v-for="(nav,index) in navList" v-on:click="lookNav(nav)" v-bind:class="{'active':nav.nid===isActive}"
+                            v-bind:key="nav.nid"
+                            class="list-cc-item"
+                        >
+                            <img v-bind:src=nav.icon alt="">
+                            <p>{{nav.name}}</p>
+                            <div class="edit" v-bind:class="{'editActive': nav.editActive} ">
+                                <input type="text" v-model="nav.name">
+                                <span v-on:click="closeEdit(nav)" class="glyphicon glyphicon-ok"></span>
+                            </div>
+                            <span v-on:click="openEdit(nav)" class="glyphicon glyphicon-pencil"></span>
+                            <span v-on:click.stop="removeNav(nav)" class="glyphicon glyphicon-remove-circle"></span>
+                        </li>
+                    </transition-group>
+                </div>
+            </div>
+            <!--左边 结束-->
+            <!--中间 开始-->
+            <div class="col-sm-4">
+                <div class="view">
+                    <div class="phone" v-cloak>
+                        <template v-if="section.id===null">
+                            <div class="top">{{editionNAME}}</div>
+                            <div class="hasno">暂未绑定组件版块</div>
+                        </template>
+                        <template v-else>
+                            <div class="top">{{section.psname}}</div>
+                            <img v-bind:src="section.url" alt="">
+                        </template>
+                        <div class="bottom">
+                            <transition-group
+                                    name="list"
+                                    tag="ul"
+                            >
+                                <li v-for="nav in navList" v-on:click="lookNav(nav)" v-bind:class="{'active':nav.nid===isActive}"
+                                    v-bind:key="nav.nid"
+                                    class="list-item"
+                                >
+                                    <div class="img">
+                                    <template v-if="nav.nid===isActive">
+                                        <img v-bind:src=nav.selectIcon alt="">
+                                    </template>
+                                    <template v-else>
+                                        <img v-bind:src=nav.icon alt="">
+                                    </template>
+                                    </div>
+                                    <p><span>{{nav.name}}</span></p>
+                                </li>
+                            </transition-group>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--中间 结束-->
+            <!--右边 开始-->
+            <div class="col-sm-4">
+                <div id="set" class="view">
+                    <div class="layui-tab layui-tab-card">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this">基础设置</li>
+                            <li>组件属性</li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <h2>选中图标</h2>
+                                <div class="layui-upload">
+                                    <div class="layui-upload-list">
+                                        <div class="img">
+                                            <img v-bind:src=navDetails.selectIcon class="layui-upload-img" id="demo1">
+                                        </div>
+                                        <h3>84*84px</h3>
+                                        <p id="demoText1"></p>
+                                    </div>
+                                    <button type="button" class="layui-btn" id="test1">修改</button>
+                                </div>
+                                <h2>非选中图标</h2>
+                                <div class="layui-upload">
+                                    <div class="layui-upload-list">
+                                        <div class="img">
+                                            <img v-bind:src=navDetails.icon class="layui-upload-img" id="demo2">
+                                        </div>
+                                        <h3>84*84px</h3>
+                                        <p id="demoText2"></p>
+                                    </div>
+                                    <button type="button" class="layui-btn" id="test2">修改</button>
+                                </div>
+                            </div>
+                            <div class="layui-tab-item">
+                                <label class="layui-form-label">当前链接：{{section.psname}}</label>
+                                <form class="layui-form" action="">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">组件名称：</label>
+                                        <div class="layui-input-block">
+                                            <select id="assemblyArr" name="interest" lay-filter="assembly">
+                                                <option value="">-请选择组件-</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">链接版块：</label>
+                                        <div class="layui-input-block">
+                                            <select id="sectionArr" name="interest" lay-filter="section">
+                                                <option value="">-请先选择组件-</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--右边 结束-->
+        </div>
+    </div>
+</div>
+
+    <script type="text/javascript" src="../script/common/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="../script/common/vue.js"></script>
+    <script type="text/javascript" src="../script/common/vue-resource.js"></script>
+    <script type="text/javascript" src="../lib/layui/layui.all.js"></script>
+    <script type="text/javascript" src="../script/script.js"></script>
+    <script type="text/javascript" src="../config/HTTPurl.js"></script>
+    <script type="text/javascript" src="../script/getUserInfo.js"></script>
+    <script type="text/javascript" src="../script/visual.js"></script>
+</body>
+</html>

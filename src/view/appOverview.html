@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html leng="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="screen-orientation" content="portrait">
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <title>天马工场-控制台</title>
+    <link rel="stylesheet" type="text/css" href="../style/common/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../style/common/common.css">
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link rel="stylesheet" type="text/css" href="../style/appOverview.css">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script>
+        alert('请注意：\n\n检测到您浏览器内核版本过低，为了您有更好地网页体验，\n\n建议请您升级浏览器版本至IE9以上或使用谷歌、火狐浏览器！');
+        window.location.href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads";
+    </script>
+    <![endif]-->
+</head>
+<body>
+<div id="container">
+    <!--应用列表 开始-->
+    <div class="aside_nav" v-cloak>
+        <div id="app_nav">
+            <div class="nav_logo">
+                <a href="../index.html"><img src="../images/login_logo.png"/></a>
+            </div>
+            <ul class="app_list">
+                <template v-if="appList.length===0">
+                    <li v-on:click="addApp()">
+                        <p>暂无应用，请添加</p>
+                    </li>
+                </template>
+                <li v-for="app in appList" v-on:click="lookEdition(app)" v-bind:class="{'active':app.uid===isActive}">
+                    <p>{{app.name}}</p>
+                    <span v-on:click="editApp(app)" class="glyphicon glyphicon-edit"></span>
+                    <span v-on:click="removeApp(app)" class="glyphicon glyphicon-remove"></span>
+                </li>
+            </ul>
+            <div class="add_after"></div>
+            <div class="add">
+                <div class="add_btn" v-on:click="addApp()">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span>添加应用</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--应用列表 结束-->
+    <!--顶部导航栏 开始-->
+    <div id="header-logged">
+        <div class="header">
+            <div class="f-left logo">
+                <!--<a href="##" ><img src="../images/appOverview/logo.png"/>控制台</a>-->
+                <p>版本列表</p>
+            </div>
+            <div class="f-right user-info">
+                <a href="../index.html" title="首页">首页&nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                <a href="balance.html" target="_blank" title="" class="user-center"></a>
+            </div>
+        </div>
+    </div>
+    <!--顶部导航栏 结束-->
+    <div class="container-fluid">
+        <div class="row wrap0">
+            <!--搜索和添加版本 开始-->
+            <div id="search_add">
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="版本号" v-model="searchValue" v-on:keyup="searchEdition()">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                        </div>
+                    </div>
+                </form>
+                <template v-if="isActive === null">
+                    <button id="addEdition" class="btn btn-primary disabled">新增版本</button>
+                </template>
+                <template v-else>
+                    <button id="addEdition" class="btn btn-primary" v-on:click="addEdition()">新增版本</button>
+                </template>
+            </div>
+            <!--搜索和添加版本 结束-->
+            <!--应用详情 开始-->
+            <div id="edition_container" class="col-sm-12">
+                <div class="edition_container">
+                    <template v-if="appDetails.length===0||noMatchEdition">
+                        <div class="text-center" style="padding-top:2rem;font-size:.3rem;">暂无版本</div>
+                        <div class="text-center" style="font-size:.3rem;">请添加</div>
+                    </template>
+                    <div class="col-sm-4" v-for="edition in appDetails" v-bind:class="{'hide':edition.show===false}" v-cloak>
+                        <div class="edition">
+                            <div class="edition_view">
+                                <div class="phone">
+                                    <template v-if="edition.edition_navs.length>0">
+                                        <div v-if="edition.edition_psname" class="top"><span>{{edition.edition_psname}}</span></div>
+                                        <div v-else class="top"><span>暂未绑定组件版块</span></div>
+                                        <img v-if="edition.edition_view" v-bind:src="edition.edition_view" alt="">
+                                        <img v-else src="../images/appOverview/no.png" alt="">
+                                        <div class="bottom">
+                                            <ul>
+                                                <li v-for="nav in edition.edition_navs" v-on:click="lookNav(nav,edition.uid)" v-bind:class="{'active':nav.id===edition.navActive}">
+                                                    <div class="img">
+                                                        <template v-if="nav.id===edition.navActive">
+                                                            <img v-bind:src=nav.showIcon alt="">
+                                                        </template>
+                                                        <template v-else>
+                                                            <img v-bind:src=nav.fIcon alt="">
+                                                        </template>
+                                                    </div>
+                                                    <p><span>{{nav.title}}</span></p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </template>
+                                    <template v-else>
+                                        <div class="hasno">暂未配置导航及组件</div>
+                                    </template>
+                                </div>
+                                <div class="edition_num text-center">{{edition.edition_num}}</div>
+                            </div>
+                            <div class="edition_operate">
+                                <template v-if="edition.status===7">
+                                    <div class="col-sm-6">
+                                        <p class="status">状态：<span>打包完成</span></p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <button type="button" class="btn btn-primary btn_dos" v-on:click="toDownload(edition.uid)">下载安装包</button>
+                                    </div>
+                                </template>
+                                <template v-else-if="edition.status===6">
+                                    <div class="col-sm-6">
+                                        <p class="status">状态：<span>打包中</span></p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <button type="button" class="btn btn-primary btn_dos" v-on:click="toLookProgress(edition.uid)">查看进程</button>
+                                    </div>
+                                </template>
+                                <template v-else>
+                                    <div class="col-sm-6">
+                                        <p class="status">状态：<span>编辑中</span></p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <button type="button" class="btn btn-primary btn_dos" v-on:click="toSet(edition.uid)">配置应用</button>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--应用详情 开始-->
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../script/common/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="../script/common/vue.js"></script>
+<script type="text/javascript" src="../script/common/vue-resource.js"></script>
+<script type="text/javascript" src="../lib/layer/layer.js"></script>
+<script type="text/javascript" src="../script/script.js"></script>
+<script type="text/javascript" src="../config/HTTPurl.js"></script>
+<script type="text/javascript" src="../script/getUserInfo.js"></script>
+<script type="text/javascript" src="../script/appOverview.js"></script>
+</body>
+</html>

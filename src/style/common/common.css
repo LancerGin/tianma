@@ -1,0 +1,186 @@
+/*=================基础样式===============*/
+@charset "utf-8";
+*{
+	margin: 0;
+	padding: 0;
+}
+body,h1,h2,h3,h4,h5,h6,p,span,img,a,input,button,textarea,form,ul,li,ol{
+	margin: 0;
+	padding: 0;
+}
+h1,h2,h3,h4,h5,h6{
+	color: #323232;
+}
+a,a:link,a:visited,a:hover,a:active{
+	outline: none;
+	text-decoration: none;
+	display: inline-block;
+    color:#646464;
+}
+p,span,b,input,button,textarea,img{
+	color: #646464;
+	border: none;
+	outline: none;
+	display: inline-block;
+}
+img{
+	max-width: 100%;
+}
+li{
+	float: left;
+	list-style-type: none;
+}
+.f-left{
+	float: left;
+}
+.f-right{
+	float: right;
+}
+.t-center{
+	text-align: center;
+}
+.t-right{
+	text-align: right;
+}
+.dis-n{
+	display: none;
+}
+.dis-b{
+	display: inline-block;
+}
+.c-fff,.c-fff p,.c-fff h3,.c-fff h2,.c-fff span,.c-fff h1,.c-fff a,.c-fff h4,.c-fff i{
+	color: #fff;
+}
+.bg-fff{
+	background-color: #fff;
+}
+/*自定义滚动条样式*/
+::-webkit-scrollbar {
+	width: 10px;
+	height: 4px;
+	background-color: rgba(193,193,193,0);
+	border:1px solid rgba(193,193,193,0);
+	border-radius: 12px;
+}
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(193,193,193,0);
+	background: rgba(193,193,193,0) ;
+	border:1px solid rgba(193,193,193,0);
+	border-radius: 12px;
+}
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb {
+	border:1px solid rgba(193,193,193,.8);
+	border-radius: 12px;
+	-webkit-box-shadow: inset 0 2px 10px rgba(193,193,193,.8);
+	background-color:rgba(193,193,193,.8);
+}
+::-webkit-scrollbar-thumb:hover {
+	border-radius: 12px;
+	-webkit-box-shadow: inset 0 0 6px rgba(193,193,193, 1);
+	background-color:rgba(193,193,193, 1);
+}
+/*vue 渲染完成前隐藏插值表达式*/
+[v-cloak] {
+	display: none;
+}
+/*layer loading层不居中的问题*/
+.layui-layer-loading .layui-layer-content{
+	margin: auto !important;
+}
+
+/*通用动画*/
+@keyframes show{
+	0%{
+		opacity:0;
+		transform:translate(-100px,0);
+	}
+	50%{
+		opacity:1;
+		transform:translate(10px,0);
+	}
+	100%{
+		opacity:1;
+		transform:translate(0,0);
+	}
+}
+@keyframes hide{
+	0%{
+		opacity:1;
+		transform:translate(0,0);
+	}
+	50%{
+		opacity:1;
+		transform:translate(10px,0);
+	}
+	100%{
+		opacity:0;
+		position: absolute;
+		transform:translate(-100px,0);
+	}
+}
+@keyframes open{
+	0%{
+		opacity:0;
+		transform:scale(0);
+	}
+	50%{
+		opacity:1;
+		transform:scale(1.1);
+	}
+	100%{
+		opacity:1;
+		transform:scale(1);
+
+	}
+}
+@keyframes close{
+	0%{
+		opacity:1;
+		transform:scale(1);
+	}
+	50%{
+		opacity:1;
+		transform:scale(1.1);
+	}
+	100%{
+		opacity:0;
+		transform:scale(0);
+
+	}
+}
+@keyframes LtoR{
+	0%{
+		opacity:0;
+		transform:translate(-100px,0);
+	}
+	100%{
+		opacity:1;
+		transform:translate(0,0);
+	}
+}
+@keyframes downtoup{
+	0%{
+		opacity:0;
+		transform:translate(0,200px);
+	}
+	50%{
+		opacity:1;
+		transform:translate(0,-10px);
+	}
+	100%{
+		opacity:1;
+		transform:translate(0,0);
+	}
+}
+@keyframes uptodown{
+	0%{
+		opacity:0;
+		transform:translate(0,-200px);
+	}
+	100%{
+		opacity:1;
+		transform:translate(0,0);
+	}
+}

@@ -1,0 +1,41 @@
+
+body{
+    background-color: #f2f2f2;
+}
+
+#container .container{
+    margin-top:72px;
+    padding-bottom:40px;
+}
+#container .container .title{
+    width:623px;
+    height:40px;
+    line-height:40px;
+    margin:30px auto;
+    background: url("../images/introduce/titleline.png") center bottom no-repeat;
+    font-size:22px;
+    font-weight:normal;
+}
+#container .container .cc{
+    position: relative;
+    margin-bottom:10px;
+}
+#container .container .cc h3{
+    font-size:18px;
+    font-weight:normal;
+    line-height:38px;
+    color: #264F9E;
+}
+#container .container .cc p{
+    font-size:14px;
+    display: block;
+    line-height:32px;
+    color: #363636;
+}
+#container .container .cc span{
+    font-size:20px;
+    color: #264F9E;
+    position: absolute;
+    top:10px;
+    left:-36px;
+}

@@ -1,0 +1,5 @@
+/*
+!.gitignore
+!/src/
+!gulpfile.js
+!package.json

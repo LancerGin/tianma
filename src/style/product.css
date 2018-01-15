@@ -1,0 +1,178 @@
+#container .row{
+    margin-top:20px;
+    background-color: #f2f2f2;
+    min-height:8rem;
+}
+#container .wrap0{
+    background-color: #fff;
+    padding-top:92px;
+}
+/*产品预览 开始*/
+#product_preview .phone{
+    width:4.38rem;
+    height:6.97rem;
+    background: url("../images/product/iphone6.png") center no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    margin:auto;
+}
+#product_preview .phone .pic_container{
+    width:2.96rem;
+    height:5.12rem;
+    position: absolute;
+    top:.9rem;
+    left:.72rem;
+}
+#product_preview .phone .pic_container img{
+    width:2.96rem;
+    height:5.12rem;
+}
+#product_preview .phone .pic_container .flexslider{
+    border:none;
+}
+#product_preview .phone .pic_container .flex-control-nav{
+    visibility: hidden;
+    bottom:5px;
+}
+/*产品预览 结束*/
+
+/*产品介绍 开始*/
+#product_info{
+    color: #3E3E3E;
+}
+#product_info .product_name{
+    font-size: 28px;
+    font-weight:600;
+    line-height:1rem;
+}
+#product_info .price{
+    color: #FF0101;
+    font-size: 26px;
+    line-height:.6rem;
+}
+#product_info .summary{
+    font-size: 16px;
+}
+#product_info .information{
+    margin-top:16px;
+}
+#product_info .information .infor_title{
+    font-size: 20px;
+    font-weight:600;
+    line-height:.88rem;
+}
+#product_info .information .infor_details{
+    font-size: 16px;
+    padding:.15rem 0;
+    display: block;
+}
+#product_info .information .infor_details .dot{
+    display: block;
+    float: left;
+    width:.1rem;
+    height:.1rem;
+    border-radius: .1rem;
+    background-color: #999;
+    margin-right:16px;
+    margin-top:.1rem;
+}
+#product_info .information .infor_assembly{
+    margin:.16rem;
+    font-size: 16px;
+}
+#product_info .information .infor_assembly .assembly{
+    margin:10px 40px;
+    float: left;
+    text-align: center;
+}
+#product_info .information .infor_assembly .assembly .assembly_img{
+    width:.76rem;
+    margin-bottom:.2rem;
+}
+#product_info .information .infor_assembly .assembly .assembly_title{
+    display: block;
+}
+#product_info .btn_container{
+    padding-top:.3rem;
+    padding-bottom:1rem;
+}
+#product_info .btn_container .buy{
+    padding:.1rem .8rem;
+    border-color: #FE0000;
+    background-color: #FE0000;
+    border-radius:8px;
+    font-size: 18px;
+    color: #fff;
+}
+#product_info .btn_container .buy:focus{
+    outline: none;
+}
+/*产品介绍 结束*/
+
+/*组件介绍 开始*/
+.row .text{
+    height:5rem;
+    padding-top:3rem;
+}
+.row .text .title{
+    font-size: .3rem;
+    line-height: 1.2rem;
+    font-weight:600;
+}
+.row .text .content{
+    display: block;
+    font-size: .24rem;
+    line-height: .4rem;
+}
+.row .images{
+    text-align: center;
+    position: relative;
+}
+.wrap1 .text{
+    padding-left:2.5rem;
+}
+.wrap1 .images img{
+    width:9.39rem;
+    height:6.88rem;
+}
+.wrap2 .text{
+    padding-left:.2rem;
+}
+.wrap2 .images img{
+    width:6.25rem;
+    height:9.4rem;
+}
+.wrap3 .text{
+    padding-left:2.8rem;
+}
+.wrap3 .images img{
+    width:12.61rem;
+    height:8.02rem;
+    position: absolute;
+    top:0;
+    left:-1.8rem;
+}
+.wrap4 .text{
+    height:3rem;
+    padding-top:5rem;
+}
+.wrap4 .images img{
+    max-width: inherit;
+    width:13.04rem;
+    position: absolute;
+    top:.8rem;
+    left:1.8rem;
+}
+.wrap5 .text{
+    height:8rem;
+    padding-top:.1rem;
+    padding-left:2.8rem;
+}
+.wrap5 .images img{
+    max-width: inherit;
+    width:10.87rem;
+    position: absolute;
+    top:-0.2rem;
+    left:-7.8rem;
+}
+/*组件介绍 结束*/

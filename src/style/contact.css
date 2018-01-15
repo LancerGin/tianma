@@ -1,0 +1,78 @@
+body{
+    background-color: #f2f2f2;
+}
+
+#container .container{
+    margin-top:72px;
+    padding-bottom:40px;
+}
+#container .container .row{
+    margin-top:30px;
+}
+#container .container .title{
+    width:454px;
+    height:40px;
+    line-height:40px;
+    margin:10px auto 40px auto;
+    background: url("../images/contact/titleline.png") center bottom no-repeat;
+    font-size:26px;
+    font-weight:normal;
+}
+#container .container p.cc{
+    height:35px;
+    line-height:35px;
+    margin-left:40px;
+    margin-bottom:20px;
+    font-size:18px;
+    padding-left:60px;
+    color: #1b1b1b;
+}
+#container .container p.cc.name{
+    background: url("../images/contact/name.png") left center no-repeat;
+    background-size: 33px 27px;
+}
+#container .container p.cc.address{
+    background: url("../images/contact/address.png") left center no-repeat;
+    background-size: 33px 27px;
+}
+#container .container p.cc.phonenum{
+    background: url("../images/contact/phonenum.png") left center no-repeat;
+    background-size: 33px 27px;
+}
+#container .container p.cc>span{
+    color: #336699;
+}
+#container .container ul{
+    width: 408px;
+    margin:0 auto;
+    visibility: hidden;/*暂时屏蔽了几个社交按钮*/
+}
+#container .container ul li{
+    margin:30px;
+}
+#container .container ul li a{
+    width:42px;
+    height:42px;
+}
+#container .container ul li a.weichart{
+    background: url("../images/contact/weichart.png") left center no-repeat;
+    background-size: 100% 100%;
+}
+#container .container ul li a.weibo{
+    background: url("../images/contact/weibo.png") left center no-repeat;
+    background-size: 100% 100%;
+}
+#container .container ul li a.qq{
+    background: url("../images/contact/qq.png") left center no-repeat;
+    background-size: 100% 100%;
+}
+#container .container ul li a.alipay{
+    background: url("../images/contact/alipay.png") left center no-repeat;
+    background-size: 100% 100%;
+}
+
+#container .container #map{
+    width: 96%;
+    margin:0 2%;
+    height:400px;
+}

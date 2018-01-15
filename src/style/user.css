@@ -1,0 +1,252 @@
+html{
+    height:100%;
+}
+body{
+    background-color: #f2f2f2;
+    height:100%;
+}
+#container{
+    height:100%;
+}
+#container .container-fluid{
+    height: 100%;
+    padding:92px 30px 20px 240px;
+}
+#container .row{
+    height:100%;
+    position: relative;
+}
+/*左侧导航 开始*/
+#container .aside_nav{
+    background-color: #343B4E;
+    animation: LtoR 1s;
+    transform-origin: 50% 0;
+    width: 210px;
+    height:100%;
+    position: fixed;
+    padding:0;
+    z-index:10000;
+}
+#nav{
+    height:100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+#nav .nav_logo{
+    order: 1;
+    width:100%;
+    height: 72px;
+    border-bottom: 2px solid rgba(255,255,255,.1);
+}
+#nav .nav_logo a{
+    width:200px;
+    height:72px;
+    padding:10px 20px;
+}
+#nav ul.list{
+    order:2;
+    display: block;
+    padding-top:20px;
+    height:80%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#nav ul.list li{
+    display: block;
+    float: left;
+    width:100%;
+    height: 50px;
+    line-height: 50px;
+    font-size:16px;
+    cursor: pointer;
+    margin-bottom:10px;
+    position: relative;
+    border-left: 3px solid #343B4E;
+}
+#nav ul.list li a{
+    width:100%;
+}
+#nav ul.list li p{
+    width:140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    margin-left:70px;
+}
+#nav ul.list li span{
+    font-size:22px;
+    position: absolute;
+    top:15px;
+    left:30px;
+}
+#nav ul.list li p{
+    color: #9ca8be;
+}
+#nav ul.list li span{
+    color: #14A7FF;
+}
+#nav ul.list li.active{
+    border-left: 3px solid #14A7FF;
+    background: #30374A;
+}
+#nav ul.list li:hover{
+    background: #30374A;
+}
+#nav ul.list li.active p,
+#nav ul.list li.active span,
+#nav ul.list li:hover p,
+#nav ul.list li:hover span{
+    color: #fff;
+}
+/*左侧导航 结束*/
+
+#user_container{
+    height:100%;
+    overflow: auto;
+}
+#user_container .card1{
+    animation: downtoup 1s;
+    transform-origin: 50% 0;
+}
+#user_container{
+    padding-left:40px;
+}
+#user_container h2{
+    font-size:18px;
+    font-weight:bold;
+    line-height:60px;
+}
+
+/*个人信息 开始*/
+#user{
+    width:100%;
+    max-width:900px;
+    background-color: #fff;
+    box-shadow: 0 0 5px #888888;
+    position: relative;
+    overflow: hidden;
+    margin-bottom:40px;
+}
+#user>h3{
+    height:48px;
+    line-height:48px;
+    padding-left:30px;
+    font-size:16px;
+    background-color: #F2F2F2;
+}
+#user p.username{
+    display: block;
+    padding-left:30px;
+    height:48px;
+    line-height:48px;
+    font-size:14px;
+    position: relative;
+}
+#user p.username span{
+    cursor: pointer;
+    color: #14A7FF;
+}
+#user .organize{
+    padding-left:30px;
+    line-height:48px;
+    font-size:14px;
+    color: #646464;
+    position: relative;
+}
+#user .organize>p{
+    display: inline;
+}
+#user .organize span.glyphicon{
+    margin-left:20px;
+    font-size:18px;
+    cursor: pointer;
+}
+#user .organize span.glyphicon:hover{
+    color: #14A7FF;
+}
+#user .organize div.edit{
+    width:480px;
+    position: absolute;
+    top:0;
+    left:110px;
+    z-index: 20;
+    background-color: #fff;
+    display: none;
+}
+#user .organize div.edit input{
+    background-color: #fff;
+    border:1px solid #bbb;
+    width:400px;
+    height:36px;
+    line-height:36px;
+}
+#user .organize div.edit span{
+    float: right;
+    font-size:24px;
+    margin:10px 26px 0 0;
+}
+#user .organize div.edit.editActive{
+    display: block;
+}
+#user button#changePWD {
+    width:160px;
+    height:34px;
+    line-height:34px;
+    margin:20px 0 40px 30px;
+    padding:0;
+    font-size:14px;
+    color: #fff;
+    background-color: #14A7FF;
+    border-color:#14A7FF;
+    border-radius:6px;
+}
+#user .pwd{
+    opacity:0;
+    position: absolute;
+}
+#user .pwd h3 {
+    height:48px;
+    line-height:48px;
+    padding-left:30px;
+    font-size:16px;
+}
+#user .pwd label {
+    font-weight:normal;
+    margin-bottom:0;
+    width:124px;
+}
+#user .pwd input {
+    font-weight:normal;
+    width:240px;
+}
+#user .pwd .col-input {
+     width:260px;
+}
+#user button#confirmChange {
+    width:160px;
+    height:34px;
+    line-height:34px;
+    margin:20px 0 40px 30px;
+    padding:0;
+    font-size:14px;
+    color: #fff;
+    background-color: #14A7FF;
+    border-color:#14A7FF;
+    border-radius:6px;
+}
+/*表单验证提示信息*/
+.asterisk{
+    line-height:34px;
+    font-size:18px;
+    color: #CA2C2D;
+}
+.error{
+    line-height:34px;
+    color: #CA2C2D;
+}
+.success{
+    font-size:18px;
+    color: #00CCFF;
+}
+/*个人信息 结束*/

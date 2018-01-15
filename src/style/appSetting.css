@@ -1,0 +1,679 @@
+html{
+    height:100%;
+}
+body{
+    background-color: #f2f2f2;
+    height:100%;
+}
+#container{
+    height:100%;
+}
+#container .container{
+    background-color: #fff;
+    height:100%;
+    overflow: auto;
+}
+
+#header {
+    height:60px;
+}
+#header .header{
+    height:60px;
+    line-height:60px;
+}
+#header .header .back{
+    position: absolute;
+    top:0;
+    left:0;
+    font-size:18px;
+}
+#header .header h1{
+    height:60px;
+    line-height:60px;
+    font-size:20px;
+}
+
+#nav .layui-tab{
+    margin:20px 0;
+}
+#nav{
+    margin-top:60px;
+}
+#nav .layui-tab-title{
+    height:.6rem;
+}
+#nav .layui-tab-title li{
+    font-size:16px;
+    margin-right:40px;
+    line-height:.6rem;
+}
+#nav .layui-tab-title div.disabled{
+    display: inline-block;
+    vertical-align: middle;
+    transition: all .2s;
+    -webkit-transition: all .2s;
+    position: relative;
+    min-width: 65px;
+    padding: 0 15px;
+    text-align: center;
+    cursor: pointer;
+    font-size:16px;
+    margin-right:40px;
+    line-height:.6rem;
+    color: #999;
+}
+#nav .layui-tab-title .layui-tab-bar{
+    display: none;
+}
+#nav .layui-tab-title .layui-this:after {
+    height: .6rem;
+}
+#nav .layui-tab-brief>.layui-tab-title .layui-this {
+    color: #14A7FF;
+}
+#nav .layui-tab-brief>.layui-tab-more li.layui-this:after, .layui-tab-brief>.layui-tab-title .layui-this:after {
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #14A7FF;
+}
+
+/*设置名称版本号 开始*/
+#step1 .form-group{
+    margin-top:10px;
+}
+#step1 label{
+    display: block;
+    height:40px;
+    line-height:40px;
+    font-size:14px;
+}
+#step1 label p{
+    font-size:14px;
+    font-weight:500;
+    color: #999;
+}
+#step1 .form-control{
+    width:300px;
+    margin-right:30px;
+    float: left;
+}
+#step1 .btn{
+    margin-top:15px;
+    width:140px;
+    float: left;
+    background-color: #14A7FF;
+    border-color: #14A7FF;
+}
+/*设置名称版本号 结束*/
+
+/*设置图标 开始*/
+#step2 .form-group{
+    margin-top:10px;
+}
+#step2 label{
+    display: block;
+    height:60px;
+    line-height:40px;
+    font-size:14px;
+}
+#step2 label p{
+    font-size:14px;
+    font-weight:500;
+    color: #999;
+}
+#step2 .form-control{
+    width:300px;
+    margin-right:30px;
+    float: left;
+}
+#step2 .btn{
+    width:80px;
+    float: left;
+    background-color: #14A7FF;
+    border-color: #14A7FF;
+}
+#step2 #icon{
+    display: inline-block;
+    width:180px;
+    margin-right:30px;
+}
+#step2 .advise{
+    font-size:14px;
+    line-height:40px;
+    color: #FF6906;
+}
+#step2 .icons{
+    margin-top:20px;
+    border:1px solid #f0f0f0;
+}
+#step2 .icons h2{
+    border-bottom:1px solid #f0f0f0;
+    height:30px;
+    line-height:30px;
+    text-align: center;
+    background-color: #D7E6F8;
+}
+#step2 .icons .images{
+    width:90%;
+    margin:auto;
+}
+#step2 .icons .images table th{
+    text-align: center;
+    color: #14A7FF;
+    background-color: #DFECFF;
+    border-color: #f0f0f0;
+    border-bottom-width:0px;
+}
+#step2 .icons .images table td{
+    border-color: #f0f0f0;
+    border-top-width:0px;
+    border-bottom-width:0px;
+}
+#step2 #ios .images table td:nth-child(1) img{
+    width:20px;
+    height:20px;
+}
+#step2 #ios .images table td:nth-child(2) img{
+    width:29px;
+    height:29px;
+}
+#step2 #ios .images table td:nth-child(3) img{
+    width:40px;
+    height:40px;
+}
+#step2 #ios .images table td:nth-child(4) img{
+    width:60px;
+    height:60px;
+}
+#step2 #ios .images table td:nth-child(5) img{
+    width:102px;
+    height:102px;
+}
+
+#step2 #android .images table td:nth-child(1) img{
+    width:108px;
+    height:108px;
+}
+#step2 #android .images table td:nth-child(2) img{
+    width:96px;
+    height:96px;
+}
+#step2 #android .images table td:nth-child(3) img{
+    width:72px;
+    height:72px;
+}
+#step2 #android .images table td:nth-child(4) img{
+    width:48px;
+    height:48px;
+}
+/*设置图标 结束*/
+
+/*设置启动页 开始*/
+#step3{
+
+}
+#step3 form{
+    margin-bottom:40px;
+}
+#step3 .form-group{
+    margin-top:10px;
+}
+#step3 label{
+    display: block;
+    height:40px;
+    line-height:40px;
+    font-size:18px;
+}
+#step3 label p{
+    font-size:15px;
+    font-weight:500;
+}
+#step3 .form-control{
+    width:300px;
+    margin-right:30px;
+    float: left;
+}
+#step3 .btn{
+    width:80px;
+    float: left;
+    background-color: #14A7FF;
+    border-color: #14A7FF;
+}
+#step3 #startPage{
+    display: inline-block;
+    width:180px;
+    margin-right:30px;
+}
+#step3 .advise{
+    font-size:14px;
+    line-height:40px;
+    color: #FF6906;
+}
+#step3 .help-block{
+    color: #999;
+    font-size:14px;
+}
+#step3 #uploadText{
+    position: absolute;
+    top:-25px;
+    right:140px;
+}
+#step3 img{
+    width:202px;
+    height:359px;
+    box-shadow: 0 0 5px #888888;
+}
+#step3 table{
+    width: 320px;
+}
+#step3 table th{
+    text-align: center;
+    background-color: #D7E6F9;
+}
+#step3 table td{
+    background-color: #fff;
+}
+#step3 p.title{
+    display: block;
+    font-size:16px;
+    line-height:80px;
+    text-align: center;
+    color: #FF6906;
+}
+/*设置启动页 结束*/
+
+/*选择组件 开始*/
+#step4{
+    position: relative;
+}
+#step4 .assemblys{
+    width:320px;
+    height:6rem;
+    margin:30px 30px;
+    border:1px solid #f0f0f0;
+}
+#step4 .assemblys .title{
+    width:100%;
+    height:.5rem;
+    line-height:.5rem;
+    text-align: center;
+    background-color: #D7E6F9;
+    border-bottom:1px solid #f0f0f0;
+}
+#step4 .assemblys ul{
+    height:5.4rem;
+    overflow:hidden auto;
+}
+#step4 .assemblys ul .hasno{
+    display: block;
+    width:1.9rem;
+    margin:1rem auto;
+}
+#step4 .assemblys ul .alladded{
+    display: block;
+    width:1.26rem;
+    margin:1rem auto;
+}
+#step4 .assemblys ul li{
+    display: block;
+    float: left;
+    width:90%;
+    margin:0 4%;
+    padding:1%;
+    border-bottom:1px solid #f0f0f0;
+}
+#step4 .assemblys ul li img{
+    width:34px;
+    height:34px;
+    margin:15px;
+}
+#step4 .assemblys ul li span{
+    line-height:64px;
+    font-size:20px;
+    cursor: pointer;
+}
+#step4 .assemblys ul li span.glyphicon-plus-sign{
+    color: #14A7FF;
+}
+#step4 .assemblys ul li span.glyphicon-minus-sign{
+    color: #999999;
+}
+#step4 .step3_save{
+    width:180px;
+    position: absolute;
+    top:6.8rem;
+    left:50%;
+    margin-left:-90px;
+    margin-bottom: 50px;
+    z-index:10;
+    background-color: #14A7FF;
+    border-color: #14A7FF;
+}
+/*组件增加、移除时的过渡动画*/
+#step4 .assemblys ul{
+    position: relative;
+}
+.list-item,
+.list-r-item{
+    transition: all .6s;
+    /*display: inline-block;*/
+}
+.list-enter, .list-leave-to
+    /* .list-complete-leave-active for below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateX(60px);
+}
+.list-r-enter, .list-r-leave-to
+    /* .list-complete-leave-active for below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateX(-60px);
+}
+.list-leave-active,
+.list-r-leave-active{
+    position: absolute;
+}
+/*选择组件 结束*/
+
+/*配置组件 开始*/
+#step5{
+    
+}
+#step5 img{
+    width:94px;
+    margin-top:1.4rem;
+}
+#step5 p{
+    display: block;
+    font-size:16px;
+    line-height:40px;
+    color: #999;
+}
+#step5 h2{
+    font-size:16px;
+    font-weight:bold;
+}
+#step5 button{
+    margin-top:20px;
+    padding:10px 20px;
+    font-size:14px;
+    color: #fff;
+    background-color: #14A7FF;
+    border-color: #14A7FF;
+}
+/*配置组件 结束*/
+
+/*打包及购买 开始*/
+#step6{
+
+}
+#step6 img{
+    width:94px;
+    margin-top:1rem;
+    margin-bottom:.4rem;
+}
+#step6 button.btn-default{
+    display: block;
+    margin:auto;
+    padding:10px 20px;
+    font-size:14px;
+    color: #fff;
+    background-color: #14A7FF;
+    border-color: #14A7FF;
+}
+#step6 h2{
+    font-size:14px;
+    color: #777;
+}
+#step6 p{
+    font-size:14px;
+    color: #555;
+}
+#step6 label{
+    font-size:14px;
+    color: #555;
+    font-weight:normal;
+    margin-top:.3rem;
+    margin-right:.3rem;
+}
+#step6 button.btn-danger{
+    margin-top:.4rem;
+    padding:.1rem .4rem;
+    font-size:13px;
+    color: #fff;
+    background-color: #ccc;
+    border-color: #ccc;
+}
+#step6 button.btn-primary{
+    color: #fff;
+    height:34px;
+    line-height: 34px;
+    font-size:14px;
+    padding:0 20px;
+    background-color: #FF3334;
+    border-color: #FF3334;
+}
+#step6 a.btn-primary{
+    color: #fff;
+    height:28px;
+    line-height: 28px;
+    font-size:14px;
+    padding:0 20px;
+    background-color: #FF6906;
+    border-color: #FF6906;
+}
+#step6 span.advise{
+    color: #FF6906;
+}
+#step6 .others{
+    width:70%;
+    margin:.6rem auto;
+    border:1px solid #f0f0f0;
+}
+#step6 .others .row1{
+    width:100%;
+    line-height: 54px;
+    border-bottom:1px solid #f0f0f0;
+}
+#step6 .others .row2{
+    width:100%;
+    line-height: 54px;
+}
+#step6 .others p{
+    padding-left:.2rem;
+}
+#step6 .others .btn-primary{
+    float: right;
+    margin:14px 14px 0 0;
+}
+#step6 .timeline{
+    width:100%;
+    height:180px;
+    margin-top:.5rem;
+    position: relative;
+}
+#step6 .timeline .gray{
+    width:100%;
+    height:3px;
+    position: absolute;
+    top:.6rem;
+    background-color: #ccc;
+    z-index: 9;
+}
+#step6 .timeline .blue{
+    width:0;
+    height:3px;
+    background-color: #14A7FF;
+    z-index: 10;
+}
+#step6 .timeline .step{
+    width:2.6rem;
+    text-align: center;
+    position: absolute;
+    top:.3rem;
+    z-index: 11;
+}
+#step6 .timeline .step .circle{
+    width:40px;
+    height:40px;
+    line-height:40px;
+    margin:auto;
+    border-radius:20px;
+    font-size:16px;
+    text-align: center;
+    color: #fff;
+    background-color: #666;
+}
+#step6 .timeline .step.active .circle{
+    background-color: #14A7FF;
+}
+#step6 .timeline .step h3{
+    font-size:16px;
+    line-height:42px;
+    color: #000;
+}
+#step6 .timeline .step p{
+    font-size:14px;
+    line-height:34px;
+    color: #999;
+}
+#step6 .timeline .progress1{
+    left:0;
+    margin-left:-1.3rem;
+}
+#step6 .timeline .progress2{
+    left:50%;
+    margin-left:-1.3rem;
+}
+#step6 .timeline .progress3{
+    left:100%;
+    margin-left:-1.3rem;
+}
+/*打包及购买 结束*/
+
+/*下载及安装 开始*/
+#step7{
+
+}
+#step7 h2{
+    font-size:.2rem;
+    line-height:.6rem;
+    color: #333;
+}
+#step7 span.advise{
+    color: #FF6906;
+}
+#step7 .way{
+    border:1px solid #aaa;
+    margin-bottom:.3rem;
+}
+#step7 .way form{
+    margin-top:20px;
+}
+#step7 .layui-form-label {
+    width: auto;
+}
+#step7 .layui-input-block {
+    margin-left: 130px;
+}
+#step7 .layui-form-select{
+    width:400px;
+}
+#step7 .way1 p{
+    display: block;
+    padding-left:15px;
+    color: #333;
+}
+#step7 .way1 p span.price{
+    font-size:.22rem;
+    color: #CD0001;
+}
+#step7 button.btn-primary{
+    display: block;
+    margin:15px;
+    padding:.05rem .5rem;
+    font-size:.18rem;
+    color: #fff;
+    background-color: #14A7FF;
+    border-color: #14A7FF;
+}
+#step7 .way2{
+    height:4rem;
+}
+#step7 .way2 img{
+    width:1.88rem;
+    height:2.32rem;
+    margin:.4rem auto;
+    display: block;
+}
+#step7 .way2 a{
+    padding:.05rem .4rem;
+    font-size:.18rem;
+    color: #fff;
+    background-color: #14A7FF;
+    border-color: #14A7FF;
+}
+#step7 .bought{
+    border:1px solid #ddd;
+    background-color: #F2F2F2;
+}
+#step7 .info{
+    margin:.4rem 0;
+}
+#step7 .info p{
+    display: block;
+    font-size:.18rem;
+    line-height:.4rem;
+    color: #333;
+}
+/*下载及安装 结束*/
+
+/*应用弹窗 开始*/
+.layui-layer{
+    border-radius: 8px!important;
+}
+.layui-layer .layui-layer-title{
+    padding:0;
+    border-bottom:none;
+    border-radius: 8px 8px 0 0;
+    background-color: #fff;
+    text-align: center;
+    font-size:20px;
+    height: 58px;
+    line-height:58px;
+}
+.layui-layer .layui-layer-content{
+    text-align: center;
+}
+.layui-layer .layui-layer-content span{
+    color: #FF6906;
+    margin:30px;
+    font-size:80px;
+}
+.layui-layer .layui-layer-content span.glyphicon-ban-circle{
+    color: #CB0002;
+}
+.layui-layer .layui-layer-content h2{
+    color: #000;
+    line-height:50px;
+    font-size:22px;
+}
+.layui-layer .layui-layer-content p{
+    display: block;
+    color: #555;
+    line-height:40px;
+    font-size:16px;
+}
+.layui-layer .layui-layer-btn a{
+    width:140px;
+    height:36px;
+    line-height:36px;
+    margin:20px;
+}
+.layui-layer .layui-layer-btn a:nth-child(1){
+    border-color: #14A7FF;
+    background-color: #14A7FF;
+}
+.layui-layer .form-group{
+    margin:20px 0 0 60px;
+}
+/*应用弹窗 结束*/
