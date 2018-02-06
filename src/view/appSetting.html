@@ -8,8 +8,8 @@
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <title>天马工场-配置应用</title>
-    <link rel="stylesheet" type="text/css" href="../style/common/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../style/common/common.css">
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../style/common.css">
     <link rel="stylesheet" type="text/css" href="../lib/layui/css/layui.css">
     <link rel="stylesheet" type="text/css" href="../style/style.css">
     <link rel="stylesheet" type="text/css" href="../style/appSetting.css">
@@ -21,7 +21,7 @@
         window.location.href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads";
     </script>
     <![endif]-->
-    <script type="text/javascript" src="../script/common/lodash.min.js"></script><!--流畅的列表过渡动画-->
+    <script type="text/javascript" src="../lib/lodash.min.js"></script><!--流畅的列表过渡动画-->
 </head>
 <body>
 <div id="container">
@@ -92,7 +92,7 @@
                         <!--设置名称版本号 开始-->
                         <div class="layui-tab-item layui-show">
                             <div id="step1">
-                                <form>
+                                <form class="layui-form">
                                 <template v-if="status === 6||status === 7">
                                     <div class="form-group">
                                         <label for="verName">版本名称：</label>
@@ -104,17 +104,33 @@
                                         <input type="text" class="form-control" id="verNumber" placeholder="" v-model="verNumber" readonly>
                                         <div class="clearfix"></div>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="verDomain">域名及站点：</label>
+                                        <input type="text" class="form-control" id="verDomain" placeholder="" v-model="verDomain" readonly>
+                                        <!--<input type="text" class="form-control" id="verSite" placeholder="" v-model="verSite" readonly>-->
+                                        <div class="clearfix"></div>
+                                    </div>
                                 </template>
                                 <template v-else>
                                     <div class="form-group">
                                         <label for="verName">版本名称：<p>（常见应用名字位2-4个字，最多6个字，请提前去应用市场确认是否存在重名应用）</p></label>
                                         <input type="text" class="form-control" id="verName" placeholder="请输入版本名称（长度1~6位）" v-model="verName" maxlength="6">
-                                        <!--<button type="button" class="btn btn-primary">保存</button>-->
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="verNumber">版本号：<p>（不超过10位字符）</p></label>
                                         <input type="text" class="form-control" id="verNumber" placeholder="请输入版本号" v-model="verNumber" maxlength="10">
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="verDomain">域名及站点：<p>（请输入正确格式的域名）</p></label>
+                                        <input type="text" class="form-control" id="verDomain" placeholder="请输入域名" v-on:blur="getSite()" v-model="verDomain">
+                                        <!--<input type="text" class="form-control" id="verSite" placeholder="" v-model="verSite" readonly>-->
+                                        <div class="lay-select">
+                                            <select id="siteArr" name="interest" lay-filter="verSite">
+                                                <option value="">-请先输入域名-</option>
+                                            </select>
+                                        </div>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="form-group">
@@ -291,13 +307,13 @@
                                                 <img src="../images/appSetting/add.png" alt="" class="hasno" key="hasno">
                                             </template>
                                             <li v-for="assembly in assembly_added"
-                                                v-bind:key="assembly.id"
+                                                v-bind:key="assembly.code"
                                                 class="list-item"
                                             >
                                                 <img v-bind:src=assembly.picon alt="">
                                                 <p class="name">{{assembly.name}}</p>
                                                 <template v-if="status !== 6&&status !== 7">
-                                                <span class="pull-right glyphicon glyphicon-minus-sign" v-on:click="removeAssembly(assembly.id)"></span>
+                                                <span class="pull-right glyphicon glyphicon-minus-sign" v-on:click="removeAssembly(assembly.code)"></span>
                                                 </template>
                                             </li>
                                         </transition-group>
@@ -314,13 +330,13 @@
                                                 <img src="../images/appSetting/alladded.png" alt="" class="alladded" key="alladded">
                                             </template>
                                             <li v-for="assembly in assembly_tobeadd"
-                                                v-bind:key="assembly.id"
+                                                v-bind:key="assembly.code"
                                                 class="list-r-item"
                                             >
                                                 <img v-bind:src=assembly.picon alt="">
                                                 <p class="name">{{assembly.name}}</p>
                                                 <template v-if="status !== 6&&status !== 7">
-                                                <span class="pull-right glyphicon glyphicon-plus-sign" v-on:click="addAssembly(assembly.id)"></span>
+                                                <span class="pull-right glyphicon glyphicon-plus-sign" v-on:click="addAssembly(assembly.code)"></span>
                                                 </template>
                                             </li>
                                         </transition-group>
@@ -472,9 +488,9 @@
     </div>
 </div>
 
-<script type="text/javascript" src="../script/common/jquery-3.2.0.min.js"></script>
-<script type="text/javascript" src="../script/common/vue.js"></script>
-<script type="text/javascript" src="../script/common/vue-resource.js"></script>
+<script type="text/javascript" src="../lib/jquery-3.2.0.min.js"></script>
+<script type="text/javascript" src="../lib/vue.js"></script>
+<script type="text/javascript" src="../lib/vue-resource.js"></script>
 <script type="text/javascript" src="../lib/layui/layui.all.js"></script>
 <script type="text/javascript" src="../script/script.js"></script>
 <script type="text/javascript" src="../config/HTTPurl.js"></script>

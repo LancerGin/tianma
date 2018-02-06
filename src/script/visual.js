@@ -27,6 +27,8 @@ var SetCenter = new Vue({
         editionID:parseInt(location.href.split("?")[1]), //版本ID
         editionNAME:'',   //版本名称
         editionNUM:'',   //版本号
+        color:'#FE350E',    //APP的主题色
+        backgroundColor:'#ffffff',   //导航栏背景色
         isActive: null,  //展示导航栏的详细配置
         navList:[],
         // navList: [
@@ -154,6 +156,15 @@ var SetCenter = new Vue({
                     var verNumber = result.verNumber;
                     this.$set(this,"editionNAME",verName);
                     this.$set(this,"editionNUM",verNumber);
+                    //版本的主题色和背景色
+                    var color = result.mainColor;
+                    var backgroundColor = result.backgroudColor;
+                    if(color){
+                        this.$set(this,"color",color);
+                    }
+                    if(backgroundColor){
+                        this.$set(this,"backgroundColor",backgroundColor);
+                    }
                     //此版本已添加的组件
                     var assemblyArr = response.data.data.versionVsPluginBeanList;
                     var assembly_added = [];
@@ -231,6 +242,11 @@ var SetCenter = new Vue({
                 });
             }else{
                 var num = navArr[navArr.length-1].nid||0;
+                for(let i=0;i<navArr.length;i++){
+                    if(num<navArr[i].nid){
+                        num=navArr[i].nid
+                    }
+                }
                 var id = num +1;
                 var newNav = {
                     nid:id,
@@ -245,6 +261,30 @@ var SetCenter = new Vue({
                     }
                 };
                 this.navList.push(newNav);
+            }
+        },
+        //修改导航栏模块的顺序，升序
+        moveUp:function(nav){
+            var theNavNeedUp = nav;
+            var navArr = this.navList;
+            for(let i=0;i<navArr.length;i++){
+                if(theNavNeedUp.nid===navArr[i].nid){
+                    let oldNav=navArr[i-1];
+                    navArr.splice(i-1,2,theNavNeedUp,oldNav);
+                    return false
+                }
+            }
+        },
+        //修改导航栏模块的顺序，降序
+        moveDown:function(nav){
+            var theNavNeedDown = nav;
+            var navArr = this.navList;
+            for(let i=0;i<navArr.length;i++){
+                if(theNavNeedDown.nid===navArr[i].nid){
+                    let oldNav=navArr[i+1];
+                    navArr.splice(i,2,oldNav,theNavNeedDown);
+                    return false
+                }
             }
         },
         //打开修改导航栏模块名称的输入框
@@ -291,6 +331,16 @@ var SetCenter = new Vue({
                     btn: ['确定']
                 });
             }
+        },
+        //修改主题色
+        changeColor:function(colorStr){
+            console.log(colorStr);
+            this.$set(this,"color",colorStr);
+        },
+        //修改导航栏背景色
+        changeBgColor:function(colorStr){
+            console.log(colorStr);
+            this.$set(this,"backgroundColor",colorStr);
         },
         //选中图标上传
         changeIcon:function(){
@@ -500,6 +550,8 @@ var SetCenter = new Vue({
                 loadingStart();
                 this.$http.post(HTTP.url+"footer/updateSets",{
                     vId:vId,
+                    mainColor:this.color,
+                    backgroudColor:this.backgroundColor,
                     footerSets:footerSets
                 },{credentials: true})
                     .then(function(response){
@@ -530,3 +582,37 @@ var SetCenter = new Vue({
     }
 });
 
+$(function(){
+    $('#picker1').colpick({
+        colorScheme:'light',
+        layout:'rgbhex',
+        color:'ff8800',
+        onSubmit:function(hsb,hex,rgb,el) {
+            SetCenter.changeColor("#"+hex);
+        }
+    }).mouseenter(function(){
+        picker1tips=layer.tips("修改应用主题色",'#picker1', {
+            tips: [1, '#14A7FF'],
+            tipsMore: true,
+            time: 4000
+        });
+    }).mouseleave(function(){
+        layer.closeAll('tips')
+    });
+    $('#picker2').colpick({
+        colorScheme:'light',
+        layout:'rgbhex',
+        color:'ff8800',
+        onSubmit:function(hsb,hex,rgb,el) {
+            SetCenter.changeBgColor("#"+hex);
+        }
+    }).mouseenter(function(){
+        picker2tips=layer.tips("修改导航栏背景色",'#picker2', {
+            tips: [1, '#14A7FF'],
+            tipsMore: true,
+            time: 4000
+        });
+    }).mouseleave(function(){
+        layer.closeAll('tips')
+    });
+});

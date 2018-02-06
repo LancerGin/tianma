@@ -8,9 +8,10 @@
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <title>天马工场-可视化配置中心</title>
-    <link rel="stylesheet" type="text/css" href="../style/common/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../style/common/common.css">
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../style/common.css">
     <link rel="stylesheet" type="text/css" href="../lib/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="../lib/colpick/colpick.css">
     <link rel="stylesheet" type="text/css" href="../style/style.css">
     <link rel="stylesheet" type="text/css" href="../style/visual.css">
     <!--[if lt IE 9]>
@@ -21,7 +22,7 @@
         window.location.href="https://support.microsoft.com/zh-cn/help/17621/internet-explorer-downloads";
     </script>
     <![endif]-->
-    <script type="text/javascript" src="../script/common/lodash.min.js"></script><!--流畅的列表过渡动画-->
+    <script type="text/javascript" src="../lib/lodash.min.js"></script><!--流畅的列表过渡动画-->
 </head>
 <body>
 <div id="container">
@@ -63,6 +64,8 @@
                                 <input type="text" v-model="nav.name">
                                 <span v-on:click="closeEdit(nav)" class="glyphicon glyphicon-ok"></span>
                             </div>
+                            <span v-on:click.stop="moveUp(nav)" v-bind:class="{'hide':index===0}" class="glyphicon glyphicon-arrow-up"></span>
+                            <span v-on:click.stop="moveDown(nav)" v-bind:class="{'hide':(navList.length-index)===1}" class="glyphicon glyphicon-arrow-down"></span>
                             <span v-on:click="openEdit(nav)" class="glyphicon glyphicon-pencil"></span>
                             <span v-on:click.stop="removeNav(nav)" class="glyphicon glyphicon-remove-circle"></span>
                         </li>
@@ -74,15 +77,17 @@
             <div class="col-sm-4">
                 <div class="view">
                     <div class="phone" v-cloak>
+                        <button id="picker1" class="picker"><img src="../images/visual/u22.png" alt=""></button>
+                        <button id="picker2" class="picker"><img src="../images/visual/u22.png" alt=""></button>
                         <template v-if="section.id===null">
-                            <div class="top">{{editionNAME}}</div>
+                            <div class="top" v-bind:style="{background:color}">{{editionNAME}}</div>
                             <div class="hasno">暂未绑定组件版块</div>
                         </template>
                         <template v-else>
-                            <div class="top">{{section.psname}}</div>
+                            <div class="top" v-bind:style="{background:color}">{{section.psname}}</div>
                             <img v-bind:src="section.url" alt="">
                         </template>
-                        <div class="bottom">
+                        <div class="bottom" v-bind:style="{background:backgroundColor}">
                             <transition-group
                                     name="list"
                                     tag="ul"
@@ -99,7 +104,14 @@
                                         <img v-bind:src=nav.icon alt="">
                                     </template>
                                     </div>
-                                    <p><span>{{nav.name}}</span></p>
+                                    <p>
+                                    <template v-if="nav.nid===isActive">
+                                        <span v-bind:style="{color:color}">{{nav.name}}</span>
+                                    </template>
+                                    <template v-else>
+                                        <span>{{nav.name}}</span>
+                                    </template>
+                                    </p>
                                 </li>
                             </transition-group>
                         </div>
@@ -170,11 +182,12 @@
     </div>
 </div>
 
-    <script type="text/javascript" src="../script/common/jquery-3.2.0.min.js"></script>
-    <script type="text/javascript" src="../script/common/vue.js"></script>
-    <script type="text/javascript" src="../script/common/vue-resource.js"></script>
+    <script type="text/javascript" src="../lib/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="../lib/vue.js"></script>
+    <script type="text/javascript" src="../lib/vue-resource.js"></script>
     <script type="text/javascript" src="../lib/layui/layui.all.js"></script>
     <script type="text/javascript" src="../script/script.js"></script>
+    <script type="text/javascript" src="../lib/colpick/colpick.js"></script>
     <script type="text/javascript" src="../config/HTTPurl.js"></script>
     <script type="text/javascript" src="../script/getUserInfo.js"></script>
     <script type="text/javascript" src="../script/visual.js"></script>

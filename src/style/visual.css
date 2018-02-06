@@ -112,6 +112,22 @@ body{
 #setCenter ul.nav_list li div.edit.editActive{
     display: block;
 }
+#setCenter ul.nav_list li>span:nth-last-of-type(4){
+    display: none;
+    font-size:24px;
+    position: absolute;
+    top:16px;
+    right:146px;
+    z-index:10;
+}
+#setCenter ul.nav_list li>span:nth-last-of-type(3){
+    display: none;
+    font-size:24px;
+    position: absolute;
+    top:16px;
+    right:106px;
+    z-index:10;
+}
 #setCenter ul.nav_list li>span:nth-last-of-type(2){
     display: none;
     font-size:24px;
@@ -157,6 +173,27 @@ body{
     background-size: 100% 100%;
     margin:.3rem auto;
     position: relative;
+}
+#setCenter .phone .picker{
+    width:.4rem;
+    height:.4rem;
+    padding:.04rem;
+    position: absolute;
+    background: #14A7FF;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+#setCenter .phone .picker img{
+    width:.32rem;
+    height:.32rem;
+}
+#setCenter .phone #picker1{
+    top:0.74rem;
+    left:-0.4rem;
+}
+#setCenter .phone #picker2{
+    top:4.74rem;
+    left:-0.4rem;
 }
 #setCenter .phone .hasno{
     position: absolute;
@@ -224,14 +261,14 @@ body{
 #setCenter .phone .bottom ul li>p{
     display: block;
     width:100%;
-    height:.1rem;
+    height:.12rem;
     text-align: center;
     overflow: hidden;
 }
 #setCenter .phone .bottom ul li>p>span{
     display: block;
     font-size:.08rem;
-    -webkit-transform: scale(0.5);/* 解决chorme字体12px限制*/
+    -webkit-transform: scale(0.6);/* 解决chorme字体12px限制*/
     transform-origin: 50% 0;/* 解决chorme字体12px限制*/
 }
 /*中间栏 结束*/
@@ -280,11 +317,15 @@ body{
 #setCenter #set .layui-form-label {
      width: auto;
 }
+#setCenter .layui-form-select dl dd.layui-this{
+    background-color:#14A7FF;
+}
 /*右边栏 结束*/
 
 /*左边导航栏增加、移除时的过渡动画*/
 .list-cc-item {
     /*display: inline-block;*/
+    transition: all .5s;
 }
 .list-cc-enter-active, .list-cc-leave-active {
     transition: all .5s;
@@ -293,6 +334,9 @@ body{
     /* .list-leave-active for below version 2.1.8 */ {
     opacity: 0;
     transform: translateX(80px);
+}
+.list-cc-leave-active {
+    position: absolute;
 }
 /*中间导航栏增加、移除时的过渡动画*/
 .list-item {

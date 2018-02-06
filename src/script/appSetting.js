@@ -41,6 +41,9 @@ var EDITION = new Vue({
         finishStep1:false,
         verName:"",
         verNumber:"",
+        verDomain:"",
+        siteArr:[],
+        verSite:"",
     //第二步"设置图标"
         finishStep2:false,
         icon:"",
@@ -74,6 +77,7 @@ var EDITION = new Vue({
     },
     mounted: function () {
         this.getEditionData();
+        this.siteChange();
         form.render();
     },
     methods: {
@@ -114,6 +118,10 @@ var EDITION = new Vue({
                     var verNumber = result.verNumber;
                     this.$set(this, "verName", verName);
                     this.$set(this, "verNumber", verNumber);
+                    var verDomain = result.domain; //域名
+                    var verSite = result.siteCode; //站点
+                    this.$set(this, "verDomain", verDomain);
+                    this.$set(this, "verSite", verSite);
 
                 //2."设置图标" 里面的信息
                     var icon = result.icon;
@@ -231,41 +239,108 @@ var EDITION = new Vue({
                 showMsg('版本名称不能为空！');
             }else if(this.verNumber===""){
                 showMsg('版本号不能为空！');
+            }else if(this.verDomain===""){
+                showMsg('请填写域名地址！');
+            }else if(!this.verSite){
+                this.verSite="00000000000000000000000000000000";//32个0
+                this.confirmSave();
             }else{
-                loadingStart();
-                this.$http.post(HTTP.url+"version/update",{
-                    id:this.id,
-                    verName:this.verName,
-                    verNumber:this.verNumber
-                },{credentials: true})
+                this.confirmSave();
+            }
+        },
+        confirmSave:function(){
+            loadingStart();
+            this.$http.post(HTTP.url+"version/update",{
+                id:this.id,
+                verName:this.verName,
+                verNumber:this.verNumber,
+                domain:this.verDomain,
+                siteCode:this.verSite
+            },{credentials: true})
+                .then(function(response){
+                    console.log("修改版本信息-请求成功：",response.data);
+                    //未登录就跳转到登录页面
+                    if(response.data.code==="08"){
+                        console.log(response.data.msg||"未登录");
+                        window.location.href="login.html";
+                    }
+                    loadingEnd();
+                    if(response.data.code==="00"){
+                        showMsg('修改成功');
+                        var result = response.data.data;
+                        //第一步成功保存后，允许设置第二个步骤,并跳转到第二步
+                        if(!this.finishStep1){
+                            this.$set(this,"finishStep1",true);
+                        }
+                        var _this =this;
+                        setTimeout(function(){
+                            _this.tabChange(2);
+                        },10);
+                    }else{
+                        showMsg(response.data.msg||"修改失败");
+                        $("#verNumber").focus();
+                    }
+                })
+                .catch(function(response) {
+                    console.log("修改版本信息-请求错误：",response)
+                });
+        },
+        //输入域名获取对应的站点列表
+        getSite:function(){
+            var verDomain = this.verDomain;
+            if(verDomain==="") {
+                showTips("域名不能为空!","#verDomain");
+                $('#siteArr').html('<option value="">-请先输入域名-</option>');
+                form.render();
+            }else if(!IsURL(verDomain)){
+                showTips("域名格式不正确!","#verDomain");
+                $('#siteArr').html('<option value="">-请先输入域名-</option>');
+                form.render();
+            }else{
+                $('#siteArr').html('<option value="00000000000000000000000000000000">默认站点</option>');
+                form.render();
+                this.$http.get(HTTP.url+"backUp/siteCode?domain="+verDomain,{credentials: true})
                     .then(function(response){
-                        console.log("修改版本信息-请求成功：",response.data);
+                        console.log("获取站点列表-请求成功：",response.data);
                         //未登录就跳转到登录页面
                         if(response.data.code==="08"){
                             console.log(response.data.msg||"未登录");
                             window.location.href="login.html";
                         }
-                        loadingEnd();
                         if(response.data.code==="00"){
-                            showMsg('修改成功');
-                            var result = response.data.data;
-                            //第一步成功保存后，允许设置第二个步骤,并跳转到第二步
-                            if(!this.finishStep1){
-                                this.$set(this,"finishStep1",true);
-                            }
-                            var _this =this;
-                            setTimeout(function(){
-                                _this.tabChange(2);
-                            },10);
+                            var list = response.data.data.list;
+                            this.$set(this,"siteArr",list);
+                            this.showSiteArr();
                         }else{
-                            showMsg(response.data.msg||"修改失败");
-                            $("#verNumber").focus();
+                            showTips(response.data.msg,"#verDomain");
                         }
                     })
                     .catch(function(response) {
-                        console.log("修改版本信息-请求错误：",response)
+                        console.log("获取站点列表-请求错误：",response)
                     });
             }
+        },
+        //展示此域名下的站点列表
+        showSiteArr:function(){
+            var siteArr = this.siteArr;
+            var str = '<option value="">-请选择站点-</option>';
+            $('#siteArr').html('');
+            $('#siteArr').siblings().remove();
+            for(let i=0;i<siteArr.length;i++){
+                str+='<option value="'+siteArr[i].site_id+'">'+siteArr[i].site_name+'</option>';
+            }
+            $('#siteArr').html(str);
+            form.render();
+            showTips("请选择站点",".lay-select");
+            this.siteChange();
+        },
+        //选择某一个站点
+        siteChange:function(){
+            var _this = this;
+            form.on('select(verSite)', function(data){
+                var selectedV = parseInt(data.value); //得到被选中的值
+                _this.$set(_this,"verSite",selectedV);
+            });
         },
     //第二步"设置图标"
         //上传图标
@@ -441,22 +516,22 @@ var EDITION = new Vue({
             var temp = []; //临时数组
             var newTobeAdd = [];
             for (var i = 0; i < assembly_added.length; i++) {
-                temp[assembly_added[i].id] = true;
+                temp[assembly_added[i].code] = true;
             }
             for (let j=0;j<assembly_tobeadd.length;j++){
-                if (!temp[assembly_tobeadd[j].id]) {
+                if (!temp[assembly_tobeadd[j].code]) {
                     newTobeAdd.push(assembly_tobeadd[j]);
                 }
             }
             this.$set(this,"assembly_tobeadd",newTobeAdd);
         },
         //添加组件
-        addAssembly:function(id){
+        addAssembly:function(code){
             var assembly_added = this.assembly_added;
             var assembly_tobeadd = this.assembly_tobeadd;
             var newTobeAdd = [];
             for (let i=0;i<assembly_tobeadd.length;i++){
-                if(assembly_tobeadd[i].id===id){
+                if(assembly_tobeadd[i].code===code){
                     assembly_added.push(assembly_tobeadd[i]);
                 }else{
                     newTobeAdd.push(assembly_tobeadd[i]);
@@ -465,12 +540,12 @@ var EDITION = new Vue({
             this.$set(this,"assembly_tobeadd",newTobeAdd);
         },
         //删除组件
-        removeAssembly:function(id){
+        removeAssembly:function(code){
             var assembly_added = this.assembly_added;
             var assembly_tobeadd = this.assembly_tobeadd;
             var newAdded = [];
             for (let i=0;i<assembly_added.length;i++){
-                if(assembly_added[i].id===id){
+                if(assembly_added[i].code===code){
                     assembly_tobeadd.push(assembly_added[i]);
                 }else{
                     newAdded.push(assembly_added[i]);
@@ -887,4 +962,9 @@ function getTwoWeekslater(dateString){
     var month = d.getMonth()+1;
     var day = d.getDate();
     return year+"年"+month+"月"+day+"日"
+}
+
+function IsURL(url){
+    var reg=/^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
+    return reg.test(url)
 }

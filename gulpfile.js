@@ -21,7 +21,7 @@ var reload = browserSync.reload;
   // .pipe(gulp.dest('dist'));
 // })
 gulp.task('imgmin', function () {
-  return gulp.src('src/images*/**/*.{png,jpg,gif,ico}')
+  return gulp.src('src/images*/**/*')
   .pipe(tinypng())    //更屌的图片压缩！
   .pipe(gulp.dest('dist'));
 })
@@ -56,7 +56,7 @@ gulp.task('config', function() {
         .pipe(gulp.dest('dist'));
 });
 gulp.task('lib', function() {
-  return  gulp.src('src/lib*/*')
+  return  gulp.src('src/lib*/**')
         .pipe(gulp.dest('dist'));
 });
 gulp.task('fonts', function() {
@@ -76,7 +76,7 @@ gulp.task('build', ['imgmin', 'html','js','css','config','lib','fonts']);
   // .pipe(reload({stream: true}));
 // })
 gulp.task('imgmin:auto', function () {
-  return gulp.src('src/images*/**/*.{png,jpg,gif,ico}')
+  return gulp.src('src/images*/**/*')
   pipe(cache(tinypng()))    //更屌的图片压缩！
   .pipe(gulp.dest('dist'))
   .pipe(reload({stream: true}));
@@ -116,7 +116,7 @@ gulp.task('config:auto', function() {
 		.pipe(reload({stream: true}));
 });
 gulp.task('lib:auto', function() {
-  return  gulp.src('src/lib*/*')
+  return  gulp.src('src/lib*/**')
         .pipe(gulp.dest('dist'))
 		.pipe(reload({stream: true}));
 });
