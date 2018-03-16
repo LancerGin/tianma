@@ -39,3 +39,37 @@ body{
     top:10px;
     left:-36px;
 }
+#container .tableContainer{
+    max-width:1000px;
+    margin:auto;
+}
+.tableContainer .table-striped>tbody>tr{
+    background-color: #fff;
+}
+.tableContainer .table-striped>tbody>tr td:nth-child(1){
+    text-align: left;
+    padding-left:.5rem;
+}
+.tableContainer .table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #F6F9FA;
+}
+.tableContainer .table-hover>tbody>tr:hover {
+    background-color: #428BCA;
+}
+.tableContainer .table-hover>tbody>tr:hover td{
+    color: #fff;
+}
+.tableContainer .table-hover>tbody>tr:hover td:nth-child(1) span{
+    color: #fff;
+}
+.tableContainer .table>tbody>tr td:nth-child(1) span{
+    color: #646464;
+    display: inline-block;
+    margin-right:.1rem;
+}
+.tableContainer .table>tbody>tr td span{
+    color: #FF7E7E;
+}
+.tableContainer .table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th{
+    /*border-color: #FF7E7E;*/
+}
