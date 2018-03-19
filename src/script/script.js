@@ -41,12 +41,12 @@ $(window).ready(function () {
         }
     }
 
-    $(".header-nav li").click(function(){
-        if(!$(this).hasClass("active")){
-            $(this).addClass("active");
-            $(this).siblings("li").removeClass("active");
-        }
-    });
+    // $(".header-nav li").click(function(){
+    //     if(!$(this).hasClass("active")){
+    //         $(this).addClass("active");
+    //         $(this).siblings("li").removeClass("active");
+    //     }
+    // });
 
 
 });
